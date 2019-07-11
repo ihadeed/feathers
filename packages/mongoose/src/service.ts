@@ -462,8 +462,8 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
   }
 }
 
-export function init(options) {
-  return new Service(options);
+export function init<T, DT extends mongoose.Document & T = mongoose.Document & T>(options: MongooseServiceOptions<DT>) {
+  return new Service<T, DT>(options);
 }
 
 export default init;
