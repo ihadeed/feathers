@@ -1,11 +1,11 @@
 // @ts-ignore
 import Router from 'radix-router';
-import { stripSlashes } from '@feathersjs/commons';
-import { Application } from '@feathersjs/feathers';
+import { stripSlashes } from '@ihadeed/commons';
+import { Application } from '@ihadeed/feathers';
 
-export const ROUTER = Symbol('@feathersjs/transport-commons/router');
+export const ROUTER = Symbol('@ihadeed/transport-commons/router');
 
-declare module '@feathersjs/feathers' {
+declare module '@ihadeed/feathers' {
   interface Application<ServiceTypes> {
     lookup (path: string): { [key: string]: string };
   }

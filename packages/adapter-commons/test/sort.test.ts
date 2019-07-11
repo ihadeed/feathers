@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { sorter } from '../src';
 
-describe('@feathersjs/adapter-commons', () => {
+describe('@ihadeed/adapter-commons', () => {
   describe('sorter', () => {
     it('simple sorter', () => {
       const array = [{

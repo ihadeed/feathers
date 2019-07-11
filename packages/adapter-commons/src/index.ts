@@ -1,4 +1,4 @@
-import { _ } from '@feathersjs/commons';
+import { _ } from '@ihadeed/commons';
 
 export { AdapterService, InternalServiceMethods, ServiceOptions } from './service';
 export { default as filterQuery, FILTERS, OPERATORS } from './filter-query';

@@ -3,7 +3,7 @@ import { Server } from 'http';
 import axios from 'axios';
 import { app } from './fixture';
 
-describe('@feathersjs/authentication-oauth/express', () => {
+describe('@ihadeed/authentication-oauth/express', () => {
   let server: Server;
 
   before(async () => {

@@ -1,5 +1,5 @@
-import { _ } from '@feathersjs/commons';
-import { BadRequest } from '@feathersjs/errors';
+import { _ } from '@ihadeed/commons';
+import { BadRequest } from '@ihadeed/errors';
 
 function parse (number: any) {
   if (typeof number !== 'undefined') {

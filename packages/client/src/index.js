@@ -1,9 +1,9 @@
-const feathers = require('@feathersjs/feathers');
-const errors = require('@feathersjs/errors');
-const authentication = require('@feathersjs/authentication-client');
-const rest = require('@feathersjs/rest-client');
-const socketio = require('@feathersjs/socketio-client');
-const primus = require('@feathersjs/primus-client');
+const feathers = require('@ihadeed/feathers');
+const errors = require('@ihadeed/errors');
+const authentication = require('@ihadeed/authentication-client');
+const rest = require('@ihadeed/rest-client');
+const socketio = require('@ihadeed/socketio-client');
+const primus = require('@ihadeed/primus-client');
 
 Object.assign(feathers, {
   errors,

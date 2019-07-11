@@ -1,7 +1,7 @@
-import { HookContext } from '@feathersjs/feathers';
+import { HookContext } from '@ihadeed/feathers';
 import Debug from 'debug';
 
-const debug = Debug('@feathersjs/authentication/hooks/connection');
+const debug = Debug('@ihadeed/authentication/hooks/connection');
 
 export default (strategy = 'jwt') => (context: HookContext) => {
   const { method, result, params: { connection } } = context;

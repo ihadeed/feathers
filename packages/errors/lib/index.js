@@ -1,4 +1,4 @@
-const debug = require('debug')('@feathersjs/errors');
+const debug = require('debug')('@ihadeed/errors');
 
 function FeathersError (msg, name, code, className, data) {
   msg = msg || 'Error';

@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { omit } from 'lodash';
 import jwt from 'jsonwebtoken';
-import feathers, { Application, Service } from '@feathersjs/feathers';
+import feathers, { Application, Service } from '@ihadeed/feathers';
 // @ts-ignore
 import memory from 'feathers-memory';
 

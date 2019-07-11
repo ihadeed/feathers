@@ -1,10 +1,10 @@
 const socketio = require('socket.io');
 const Proto = require('uberproto');
 const http = require('http');
-const { socket: commons } = require('@feathersjs/transport-commons');
-const debug = require('debug')('@feathersjs/socketio');
+const { socket: commons } = require('@ihadeed/transport-commons');
+const debug = require('debug')('@ihadeed/socketio');
 
-const socketKey = Symbol('@feathersjs/socketio/socket');
+const socketKey = Symbol('@ihadeed/socketio/socket');
 
 function configureSocketio (port, options, config) {
   if (typeof port !== 'number') {
@@ -23,7 +23,7 @@ function configureSocketio (port, options, config) {
     const getParams = socket => socket.feathers;
 
     if (!app.version || app.version < '3.0.0') {
-      throw new Error('@feathersjs/socketio is not compatible with this version of Feathers. Use the latest at @feathersjs/feathers.');
+      throw new Error('@ihadeed/socketio is not compatible with this version of Feathers. Use the latest at @ihadeed/feathers.');
     }
 
     // Promise that resolves with the Socket.io `io` instance

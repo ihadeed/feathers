@@ -1,5 +1,5 @@
 import assert from 'assert';
-import feathers, { Params, Service } from '@feathersjs/feathers';
+import feathers, { Params, Service } from '@ihadeed/feathers';
 
 import { AuthenticationRequest } from '../../src/core';
 import hook from '../../src/hooks/connection';

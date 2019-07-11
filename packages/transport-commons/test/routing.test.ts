@@ -1,5 +1,5 @@
 import assert from 'assert';
-import feathers, { Application } from '@feathersjs/feathers';
+import feathers, { Application } from '@ihadeed/feathers';
 import { routing, ROUTER } from '../src/routing';
 
 describe('app.router', () => {

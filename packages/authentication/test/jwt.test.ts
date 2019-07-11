@@ -1,6 +1,6 @@
 import assert from 'assert';
 import { merge } from 'lodash';
-import feathers, { Application, Service } from '@feathersjs/feathers';
+import feathers, { Application, Service } from '@ihadeed/feathers';
 // @ts-ignore
 import memory from 'feathers-memory';
 

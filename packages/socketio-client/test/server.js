@@ -1,5 +1,5 @@
-const feathers = require('@feathersjs/feathers');
-const socketio = require('@feathersjs/socketio');
+const feathers = require('@ihadeed/feathers');
+const socketio = require('@ihadeed/socketio');
 const { Service } = require('feathers-memory');
 
 // eslint-disable-next-line no-extend-native

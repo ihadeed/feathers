@@ -1,4 +1,4 @@
-const errors = require('@feathersjs/errors');
+const errors = require('@ihadeed/errors');
 
 module.exports = function ({ verbose = false } = {}) {
   return function (req, res, next) {

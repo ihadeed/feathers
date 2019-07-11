@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/express",
   "description": "Feathers Express framework bindings and REST provider",
-  "version": "4.0.0-pre.6",
+  "version": "4.0.0",
   "homepage": "https://feathersjs.com",
   "main": "lib/",
   "types": "index.d.ts",
@@ -36,17 +36,17 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/commons": "^4.0.0-pre.6",
-    "@ihadeed/errors": "^4.0.0-pre.6",
+    "@ihadeed/commons": "^4.0.0",
+    "@ihadeed/errors": "^4.0.0",
     "@types/express": "^4.17.0",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "uberproto": "^2.0.4"
   },
   "devDependencies": {
-    "@ihadeed/authentication": "^4.0.0-pre.6",
-    "@ihadeed/authentication-local": "^4.0.0-pre.6",
-    "@ihadeed/feathers": "^4.0.0-pre.6",
+    "@ihadeed/authentication": "^4.0.0",
+    "@ihadeed/authentication-local": "^4.0.0",
+    "@ihadeed/feathers": "^4.0.0",
     "axios": "^0.19.0",
     "chai": "^4.2.0",
     "lodash": "^4.17.13",

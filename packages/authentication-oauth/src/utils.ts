@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 import session from 'express-session';
-import { Application } from '@feathersjs/feathers';
+import { Application } from '@ihadeed/feathers';
 
 export interface OauthSetupSettings {
   authService: string;

@@ -1,8 +1,8 @@
 import assert from 'assert';
 import { join } from 'path';
-import feathers, { Application } from '@feathersjs/feathers';
+import feathers, { Application } from '@ihadeed/feathers';
 
-describe('@feathersjs/configuration', () => {
+describe('@ihadeed/configuration', () => {
   const originalEnv: { [key: string]: any } = {};
   let app: Application;
   let plugin: any;

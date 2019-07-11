@@ -1,12 +1,12 @@
 import Debug from 'debug';
 import { Channel } from './channel/base';
 import { CombinedChannel } from './channel/combined';
-import { HookContext } from '@feathersjs/feathers';
+import { HookContext } from '@ihadeed/feathers';
 
-const debug = Debug('@feathersjs/transport-commons:channels/mixins');
-const PUBLISHERS = Symbol('@feathersjs/transport-commons/publishers');
-const CHANNELS = Symbol('@feathersjs/transport-commons/channels');
-const ALL_EVENTS = Symbol('@feathersjs/transport-commons/all-events');
+const debug = Debug('@ihadeed/transport-commons:channels/mixins');
+const PUBLISHERS = Symbol('@ihadeed/transport-commons/publishers');
+const CHANNELS = Symbol('@ihadeed/transport-commons/channels');
+const ALL_EVENTS = Symbol('@ihadeed/transport-commons/all-events');
 
 export const keys = {
   PUBLISHERS: PUBLISHERS as typeof PUBLISHERS,

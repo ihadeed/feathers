@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const feathers = require('@feathersjs/feathers');
+const feathers = require('@ihadeed/feathers');
 const rest = require('../lib/index');
 const assert = require('assert');
 

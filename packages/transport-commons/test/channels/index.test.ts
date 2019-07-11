@@ -1,5 +1,5 @@
 import assert from 'assert';
-import feathers from '@feathersjs/feathers';
+import feathers from '@ihadeed/feathers';
 import { channels, keys } from '../../src/channels';
 
 describe('feathers-channels', () => {

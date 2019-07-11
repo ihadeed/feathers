@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { Application } from '@feathersjs/feathers';
+import { Application } from '@ihadeed/feathers';
 
 import { hooks } from '../../src';
 // @ts-ignore
@@ -7,7 +7,7 @@ import createApplication from '../fixture';
 
 const { hashPassword } = hooks;
 
-describe('@feathersjs/authentication-local/hooks/hash-password', () => {
+describe('@ihadeed/authentication-local/hooks/hash-password', () => {
   let app: Application;
 
   beforeEach(() => {

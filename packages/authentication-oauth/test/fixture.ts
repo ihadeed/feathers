@@ -1,6 +1,6 @@
-import feathers, { Params } from '@feathersjs/feathers';
-import express, { rest, errorHandler } from '@feathersjs/express';
-import { AuthenticationService, JWTStrategy, AuthenticationRequest } from '@feathersjs/authentication';
+import feathers, { Params } from '@ihadeed/feathers';
+import express, { rest, errorHandler } from '@ihadeed/express';
+import { AuthenticationService, JWTStrategy, AuthenticationRequest } from '@ihadeed/authentication';
 import { express as oauth, OAuthStrategy } from '../src';
 
 // @ts-ignore

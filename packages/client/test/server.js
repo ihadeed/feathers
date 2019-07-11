@@ -1,4 +1,4 @@
-const socketio = require('@feathersjs/socketio');
+const socketio = require('@ihadeed/socketio');
 const createApp = require('./fixture');
 const app = createApp(function () {
   this.configure(socketio());

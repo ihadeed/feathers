@@ -1,6 +1,6 @@
-const feathers = require('@feathersjs/feathers');
+const feathers = require('@ihadeed/feathers');
 const memory = require('feathers-memory');
-const { AuthenticationService, JWTStrategy } = require('@feathersjs/authentication');
+const { AuthenticationService, JWTStrategy } = require('@ihadeed/authentication');
 
 const { LocalStrategy, hooks } = require('../lib');
 const { hashPassword, protect } = hooks;

@@ -1,4 +1,4 @@
-const Service = require('@feathersjs/transport-commons/client');
+const Service = require('@ihadeed/transport-commons/client');
 
 function socketioClient (connection, options) {
   if (!connection) {

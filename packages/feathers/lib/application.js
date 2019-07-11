@@ -1,5 +1,5 @@
 const debug = require('debug')('feathers:application');
-const { stripSlashes } = require('@feathersjs/commons');
+const { stripSlashes } = require('@ihadeed/commons');
 
 const Uberproto = require('uberproto');
 const events = require('./events');

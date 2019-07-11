@@ -1,1 +1,1 @@
-module.exports = require('@feathersjs/authentication-client');
+module.exports = require('@ihadeed/authentication-client');

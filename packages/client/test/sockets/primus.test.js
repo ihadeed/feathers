@@ -1,5 +1,5 @@
-const primus = require('@feathersjs/primus');
-const baseTests = require('@feathersjs/tests/lib/client');
+const primus = require('@ihadeed/primus');
+const baseTests = require('@ihadeed/tests/lib/client');
 
 const app = require('../fixture');
 const feathers = require('../../');

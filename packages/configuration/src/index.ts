@@ -1,9 +1,9 @@
-import { Application } from '@feathersjs/feathers';
+import { Application } from '@ihadeed/feathers';
 import Debug from 'debug';
 import path from 'path';
 import config from 'config';
 
-const debug = Debug('@feathersjs/configuration');
+const debug = Debug('@ihadeed/configuration');
 const separator = path.sep;
 
 export default function init () {

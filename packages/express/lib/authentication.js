@@ -1,5 +1,5 @@
 const { flatten, merge } = require('lodash');
-const debug = require('debug')('@feathersjs/express/authentication');
+const debug = require('debug')('@ihadeed/express/authentication');
 
 const normalizeStrategy = (_settings = [], ..._strategies) =>
   typeof _settings === 'string'

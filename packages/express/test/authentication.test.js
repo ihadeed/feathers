@@ -1,15 +1,15 @@
 const assert = require('assert');
 const _axios = require('axios');
-const feathers = require('@feathersjs/feathers');
-const getApp = require('@feathersjs/authentication-local/test/fixture');
-const { authenticate } = require('@feathersjs/authentication');
+const feathers = require('@ihadeed/feathers');
+const getApp = require('@ihadeed/authentication-local/test/fixture');
+const { authenticate } = require('@ihadeed/authentication');
 
 const expressify = require('../lib');
 const axios = _axios.create({
   baseURL: 'http://localhost:9876/'
 });
 
-describe('@feathersjs/express/authentication', () => {
+describe('@ihadeed/express/authentication', () => {
   const email = 'expresstest@authentication.com';
   const password = 'superexpress';
 

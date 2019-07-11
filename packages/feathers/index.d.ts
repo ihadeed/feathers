@@ -55,7 +55,7 @@ declare namespace createApplication {
 
   interface Params<T> {
     query?: BaseQuery<T>;
-    paginate?: false | Pick<PaginationOptions, 'max'>;
+    paginate?: boolean | number;
 
     [key: string]: any; // (JL) not sure if we want this
   }
@@ -65,6 +65,14 @@ declare namespace createApplication {
     limit: number;
     skip: number;
     data: T[];
+  }
+
+  interface FindOneParams<T> extends Params<T> {
+    query: BaseQuery<T> & { $limit: 1 };
+  }
+
+  interface PaginationParams<T> extends Params<T> {
+    paginate: true;
   }
 
   // tslint:disable-next-line void-return

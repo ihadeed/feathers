@@ -1,16 +1,16 @@
-const feathers = require('@feathersjs/feathers');
-const express = require('@feathersjs/express');
+const feathers = require('@ihadeed/feathers');
+const express = require('@ihadeed/express');
 const assert = require('assert');
 const _ = require('lodash');
 const io = require('socket.io-client');
 const request = require('request');
-const { Service } = require('@feathersjs/tests/lib/fixture');
+const { Service } = require('@ihadeed/tests/lib/fixture');
 
 const methodTests = require('./methods.js');
 const eventTests = require('./events');
 const socketio = require('../lib');
 
-describe.only('@feathersjs/socketio', () => {
+describe.only('@ihadeed/socketio', () => {
   let app;
   let server;
   let socket;

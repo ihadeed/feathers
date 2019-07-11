@@ -1,6 +1,6 @@
-import { NotAuthenticated } from '@feathersjs/errors';
-import { Application } from '@feathersjs/feathers';
-import { AuthenticationRequest, AuthenticationResult } from '@feathersjs/authentication';
+import { NotAuthenticated } from '@ihadeed/errors';
+import { Application } from '@ihadeed/feathers';
+import { AuthenticationRequest, AuthenticationResult } from '@ihadeed/authentication';
 import { Storage, StorageWrapper } from './storage';
 
 const getMatch = (location: Location, key: string): [ string, RegExp ] => {

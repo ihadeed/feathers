@@ -1,8 +1,8 @@
 import Debug from 'debug';
-import { convert, Timeout } from '@feathersjs/errors';
-import { Params } from '@feathersjs/feathers';
+import { convert, Timeout } from '@ihadeed/errors';
+import { Params } from '@ihadeed/feathers';
 
-const debug = Debug('@feathersjs/transport-commons/client');
+const debug = Debug('@ihadeed/transport-commons/client');
 
 const namespacedEmitterMethods = [
   'addListener',

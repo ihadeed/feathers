@@ -1,5 +1,5 @@
 const assert = require('assert');
-const baseTests = require('@feathersjs/tests/lib/client');
+const baseTests = require('@ihadeed/tests/lib/client');
 const memory = require('feathers-memory');
 
 const feathers = require('../dist/feathers');

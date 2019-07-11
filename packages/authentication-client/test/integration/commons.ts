@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { Application } from '@feathersjs/feathers';
+import { Application } from '@ihadeed/feathers';
 import '../../src';
 
 export default (getApp: () => Application, getClient: () => Application, {

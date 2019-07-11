@@ -1,4 +1,4 @@
-import { HookContext } from '@feathersjs/feathers';
+import { HookContext } from '@ihadeed/feathers';
 
 export const populateHeader = () => {
   return (context: HookContext) => {

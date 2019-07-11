@@ -1,9 +1,9 @@
 import { strict as assert } from 'assert';
-import feathers from '@feathersjs/feathers';
+import feathers from '@ihadeed/feathers';
 import { setup, express, OauthSetupSettings } from '../src';
-import { AuthenticationService } from '@feathersjs/authentication/lib';
+import { AuthenticationService } from '@ihadeed/authentication/lib';
 
-describe('@feathersjs/authentication-oauth', () => {
+describe('@ihadeed/authentication-oauth', () => {
   describe('setup', () => {
     it('errors when service does not exist', () => {
       const app = feathers();
@@ -13,7 +13,7 @@ describe('@feathersjs/authentication-oauth', () => {
         assert.fail('Should never get here');
       } catch (error) {
         assert.equal(error.message,
-          `'something' authentication service must exist before registering @feathersjs/authentication-oauth`
+          `'something' authentication service must exist before registering @ihadeed/authentication-oauth`
         );
       }
     });

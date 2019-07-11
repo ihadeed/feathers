@@ -2,10 +2,10 @@ import Debug from 'debug';
 import { channels } from '../channels';
 import { routing } from '../routing';
 import { getDispatcher, runMethod } from './utils';
-import { Application } from '@feathersjs/feathers';
+import { Application } from '@ihadeed/feathers';
 import { RealTimeConnection } from '../channels/channel/base';
 
-const debug = Debug('@feathersjs/transport-commons');
+const debug = Debug('@ihadeed/transport-commons');
 
 export interface SocketOptions {
   done: Promise<any>;

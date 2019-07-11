@@ -1,4 +1,4 @@
-const errors = require('@feathersjs/errors');
+const errors = require('@ihadeed/errors');
 const path = require('path');
 
 const defaults = {

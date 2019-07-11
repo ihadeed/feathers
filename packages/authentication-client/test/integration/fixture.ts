@@ -1,9 +1,9 @@
-import { authenticate } from '@feathersjs/authentication';
-import { HookContext, Application } from '@feathersjs/feathers';
+import { authenticate } from '@ihadeed/authentication';
+import { HookContext, Application } from '@ihadeed/feathers';
 // @ts-ignore
 import memory from 'feathers-memory';
-import { AuthenticationService, JWTStrategy } from '@feathersjs/authentication';
-import { LocalStrategy, hooks } from '@feathersjs/authentication-local';
+import { AuthenticationService, JWTStrategy } from '@ihadeed/authentication';
+import { LocalStrategy, hooks } from '@ihadeed/authentication-local';
 
 const { hashPassword, protect } = hooks;
 

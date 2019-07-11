@@ -1,13 +1,13 @@
 import io from 'socket.io-client';
-import feathers, { Application } from '@feathersjs/feathers';
-import socketio from '@feathersjs/socketio';
-import socketioClient from '@feathersjs/socketio-client';
+import feathers, { Application } from '@ihadeed/feathers';
+import socketio from '@ihadeed/socketio';
+import socketioClient from '@ihadeed/socketio-client';
 
 import authClient from '../../src';
 import getApp from './fixture';
 import commonTests from './commons';
 
-describe('@feathersjs/authentication-client Socket.io integration', () => {
+describe('@ihadeed/authentication-client Socket.io integration', () => {
   let app: Application;
 
   before(() => {

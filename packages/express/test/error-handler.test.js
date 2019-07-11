@@ -2,7 +2,7 @@
 /* tslint:disable:no-unused-expression */
 const express = require('express');
 
-const errors = require('@feathersjs/errors');
+const errors = require('@ihadeed/errors');
 const chai = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');

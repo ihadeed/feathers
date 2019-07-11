@@ -1,4 +1,4 @@
-const { _ } = require('@feathersjs/commons');
+const { _ } = require('@ihadeed/commons');
 
 const assignArguments = context => {
   const { service, method } = context;

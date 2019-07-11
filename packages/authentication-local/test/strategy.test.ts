@@ -3,9 +3,9 @@ import { omit } from 'lodash';
 import { LocalStrategy } from '../src';
 // @ts-ignore
 import createApplication from './fixture';
-import { Application } from '@feathersjs/feathers';
+import { Application } from '@ihadeed/feathers';
 
-describe('@feathersjs/authentication-local/strategy', () => {
+describe('@ihadeed/authentication-local/strategy', () => {
   const password = 'localsecret';
   const email = 'localtester@feathersjs.com';
 

@@ -3,12 +3,12 @@ import { compact, flattenDeep, noop } from 'lodash';
 import { Channel } from './channel/base';
 import { CombinedChannel } from './channel/combined';
 import { channelMixin, publishMixin, keys, PublishMixin, Event, Publisher } from './mixins';
-import { Application, Service } from '@feathersjs/feathers';
+import { Application, Service } from '@ihadeed/feathers';
 
-const debug = Debug('@feathersjs/transport-commons/channels');
+const debug = Debug('@ihadeed/transport-commons/channels');
 const { CHANNELS } = keys;
 
-declare module '@feathersjs/feathers' {
+declare module '@ihadeed/feathers' {
   interface ServiceAddons<T> {
     publish (publisher: Publisher<T>): this;
     publish (event: Event, publisher: Publisher<T>): this;

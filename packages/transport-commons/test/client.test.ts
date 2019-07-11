@@ -1,6 +1,6 @@
 import assert from 'assert';
 import { EventEmitter } from 'events';
-import errors from '@feathersjs/errors';
+import errors from '@ihadeed/errors';
 import { Service } from '../src/client';
 
 declare type DummyCallback = (err: any, data?: any) => void;

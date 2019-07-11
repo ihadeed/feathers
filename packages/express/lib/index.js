@@ -1,6 +1,6 @@
 const express = require('express');
 const Proto = require('uberproto');
-const debug = require('debug')('@feathersjs/express');
+const debug = require('debug')('@ihadeed/express');
 
 const errorHandler = require('./error-handler');
 const authentication = require('./authentication');
@@ -13,11 +13,11 @@ function feathersExpress (feathersApp, expressApp = express()) {
   }
 
   if (typeof feathersApp.setup !== 'function') {
-    throw new Error('@feathersjs/express requires a valid Feathers application instance');
+    throw new Error('@ihadeed/express requires a valid Feathers application instance');
   }
 
   if (!feathersApp.version || feathersApp.version < '3.0.0') {
-    throw new Error(`@feathersjs/express requires an instance of a Feathers application version 3.x or later (got ${feathersApp.version || 'unknown'})`);
+    throw new Error(`@ihadeed/express requires an instance of a Feathers application version 3.x or later (got ${feathersApp.version || 'unknown'})`);
   }
 
   // An Uberproto mixin that provides the extended functionality

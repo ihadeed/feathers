@@ -2,13 +2,13 @@ import { promisify } from 'util';
 import { merge } from 'lodash';
 import jsonwebtoken, { SignOptions, Secret, VerifyOptions } from 'jsonwebtoken';
 import uuidv4 from 'uuid/v4';
-import { NotAuthenticated } from '@feathersjs/errors';
+import { NotAuthenticated } from '@ihadeed/errors';
 import Debug from 'debug';
-import { Application, Params } from '@feathersjs/feathers';
+import { Application, Params } from '@ihadeed/feathers';
 import { IncomingMessage, ServerResponse } from 'http';
 import defaultOptions from './options';
 
-const debug = Debug('@feathersjs/authentication/base');
+const debug = Debug('@ihadeed/authentication/base');
 const verifyJWT = promisify(jsonwebtoken.verify);
 const createJWT = promisify(jsonwebtoken.sign);
 

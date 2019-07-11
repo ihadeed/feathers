@@ -1,6 +1,6 @@
-const feathers = require('@feathersjs/feathers');
-const express = require('@feathersjs/express');
-const rest = require('@feathersjs/express/rest');
+const feathers = require('@ihadeed/feathers');
+const express = require('@ihadeed/express');
+const rest = require('@ihadeed/express/rest');
 const memory = require('feathers-memory');
 
 // eslint-disable-next-line no-extend-native

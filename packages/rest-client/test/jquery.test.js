@@ -1,9 +1,9 @@
 const assert = require('assert');
-const feathers = require('@feathersjs/feathers');
+const feathers = require('@ihadeed/feathers');
 const { JSDOM } = require('jsdom');
 const jquery = require('jquery');
-const baseTests = require('@feathersjs/tests/lib/client');
-const errors = require('@feathersjs/errors');
+const baseTests = require('@ihadeed/tests/lib/client');
+const errors = require('@ihadeed/errors');
 const server = require('./server');
 const rest = require('../lib/index');
 

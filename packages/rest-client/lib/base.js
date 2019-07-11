@@ -1,8 +1,8 @@
 const query = require('qs');
-const { Unavailable } = require('@feathersjs/errors');
-const { _ } = require('@feathersjs/commons');
-const { stripSlashes } = require('@feathersjs/commons');
-const { convert } = require('@feathersjs/errors');
+const { Unavailable } = require('@ihadeed/errors');
+const { _ } = require('@ihadeed/commons');
+const { stripSlashes } = require('@ihadeed/commons');
+const { convert } = require('@ihadeed/errors');
 
 function toError (error) {
   if (error.code === 'ECONNREFUSED') {

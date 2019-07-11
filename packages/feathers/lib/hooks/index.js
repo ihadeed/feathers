@@ -1,4 +1,4 @@
-const { hooks, isPromise } = require('@feathersjs/commons');
+const { hooks, isPromise } = require('@ihadeed/commons');
 const baseHooks = require('./base');
 
 const {

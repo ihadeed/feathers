@@ -1,9 +1,9 @@
 import assert from 'assert';
-import feathers, { Application } from '@feathersjs/feathers';
+import feathers, { Application } from '@ihadeed/feathers';
 
 import client, { AuthenticationClient } from '../src';
 
-describe('@feathersjs/authentication-client', () => {
+describe('@ihadeed/authentication-client', () => {
   const accessToken = 'testing';
   const user = {
     name: 'Test User'

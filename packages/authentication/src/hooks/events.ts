@@ -1,7 +1,7 @@
 import Debug from 'debug';
-import { HookContext } from '@feathersjs/feathers';
+import { HookContext } from '@ihadeed/feathers';
 
-const debug = Debug('@feathersjs/authentication/hooks/connection');
+const debug = Debug('@ihadeed/authentication/hooks/connection');
 const EVENTS: { [key: string]: string } = {
   create: 'login',
   remove: 'logout'

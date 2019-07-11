@@ -1,5 +1,5 @@
-import { NotImplemented, BadRequest, MethodNotAllowed } from '@feathersjs/errors';
-import { ServiceMethods, Params, Paginated, Id, NullableId } from '@feathersjs/feathers';
+import { BadRequest, MethodNotAllowed, NotImplemented } from '@ihadeed/errors';
+import { FindOneParams, Id, NullableId, Paginated, PaginationParams, Params, ServiceMethods } from '@ihadeed/feathers';
 import filterQuery from './filter-query';
 
 const callMethod = (self: any, name: any, ...args: any[]) => {
@@ -13,12 +13,12 @@ const callMethod = (self: any, name: any, ...args: any[]) => {
 const alwaysMulti: { [key: string]: boolean } = {
   find: true,
   get: false,
-  update: false
+  update: false,
 };
 
 export interface ServiceOptions {
   events: string[];
-  multi: boolean|string[];
+  multi: boolean | string[];
   id: string;
   paginate: any;
   whitelist: string[];
@@ -26,51 +26,56 @@ export interface ServiceOptions {
 }
 
 export interface InternalServiceMethods<T = any> {
-    _find (params?: Params): Promise<T | T[] | Paginated<T>>;
-    _get (id: Id, params?: Params): Promise<T>;
-    _create (data: Partial<T> | Array<Partial<T>>, params?: Params): Promise<T | T[]>;
-    _update (id: NullableId, data: T, params?: Params): Promise<T>;
-    _patch (id: NullableId, data: Partial<T>, params?: Params): Promise<T>;
-    _remove (id: NullableId, params?: Params): Promise<T>;
+  _find(params?: Params<T>): Promise<T> | Promise<T[]> | Promise<Paginated<T>>;
+
+  _get(id: Id, params?: Params<T>): Promise<T>;
+
+  _create(data: Partial<T> | Array<Partial<T>>, params?: Params<T>): Promise<T | T[]>;
+
+  _update(id: NullableId, data: T, params?: Params<T>): Promise<T>;
+
+  _patch(id: NullableId, data: Partial<T>, params?: Params<T>): Promise<T>;
+
+  _remove(id: NullableId, params?: Params<T>): Promise<T>;
 }
 
 export class AdapterService<T = any> implements ServiceMethods<T> {
   options: ServiceOptions;
 
-  constructor (options: Partial<ServiceOptions>) {
+  constructor(options: Partial<ServiceOptions>) {
     this.options = Object.assign({
       id: 'id',
       events: [],
       paginate: {},
       multi: false,
       filters: [],
-      whitelist: []
+      whitelist: [],
     }, options);
   }
 
-  get id () {
+  get id() {
     return this.options.id;
   }
 
-  get events () {
+  get events() {
     return this.options.events;
   }
 
-  filterQuery (params: Params = {}, opts: any = {}) {
+  filterQuery(params: Params<T> = {}, opts: any = {}) {
     const paginate = typeof params.paginate !== 'undefined'
       ? params.paginate : this.options.paginate;
     const { query = {} } = params;
     const options = Object.assign({
       operators: this.options.whitelist || [],
       filters: this.options.filters,
-      paginate
+      paginate,
     }, opts);
     const result = filterQuery(query, options);
 
     return Object.assign(result, { paginate });
   }
 
-  allowsMulti (method: string) {
+  allowsMulti(method: string) {
     const always = alwaysMulti[method];
 
     if (typeof always !== 'undefined') {
@@ -86,43 +91,48 @@ export class AdapterService<T = any> implements ServiceMethods<T> {
     }
   }
 
-  find (params?: Params): Promise<T | T[] | Paginated<T>> {
+  async find(params?: FindOneParams<T>): Promise<T>;
+  async find(params?: PaginationParams<T>): Promise<Paginated<T>>;
+  async find(params?: Params<T>): Promise<T[]>;
+  async find(params?: Params<T>) {
     return callMethod(this, '_find', params);
   }
 
-  get (id: Id, params?: Params): Promise<T> {
+  async get(id: Id, params?: Params<T>): Promise<T> {
     return callMethod(this, '_get', id, params);
   }
 
-  create (data: Partial<T> | Array<Partial<T>>, params?: Params): Promise<T | T[]> {
+  async create(data: Partial<T>, params?: Params<T>): Promise<T>;
+  async create(data: Partial<T>[], params?: Params<T>): Promise<T[]>;
+  async create(data: Partial<T> | Array<Partial<T>>, params?: Params<T>) {
     if (Array.isArray(data) && !this.allowsMulti('create')) {
-      return Promise.reject(new MethodNotAllowed(`Can not create multiple entries`));
+      throw new MethodNotAllowed(`Can not create multiple entries`);
     }
 
     return callMethod(this, '_create', data, params);
   }
 
-  update (id: NullableId, data: T, params?: Params): Promise<T> {
+  async update(id: NullableId, data: T, params?: Params<T>): Promise<T> {
     if (id === null || Array.isArray(data)) {
       return Promise.reject(new BadRequest(
-        `You can not replace multiple instances. Did you mean 'patch'?`
+        `You can not replace multiple instances. Did you mean 'patch'?`,
       ));
     }
 
     return callMethod(this, '_update', id, data, params);
   }
 
-  patch (id: NullableId, data: Partial<T>, params?: Params): Promise<T> {
+  async patch(id: NullableId, data: Partial<T>, params?: Params<T>): Promise<T> {
     if (id === null && !this.allowsMulti('patch')) {
-      return Promise.reject(new MethodNotAllowed(`Can not patch multiple entries`));
+      throw new MethodNotAllowed(`Can not patch multiple entries`);
     }
 
     return callMethod(this, '_patch', id, data, params);
   }
 
-  remove (id: NullableId, params?: Params): Promise<T> {
+  async remove(id: NullableId, params?: Params<T>): Promise<T> {
     if (id === null && !this.allowsMulti('remove')) {
-      return Promise.reject(new MethodNotAllowed(`Can not remove multiple entries`));
+      throw new MethodNotAllowed(`Can not remove multiple entries`);
     }
 
     return callMethod(this, '_remove', id, params);

@@ -3,7 +3,7 @@ const assert = require('assert');
 const errors = require('../lib');
 const { convert } = errors;
 
-describe('@feathersjs/errors', () => {
+describe('@ihadeed/errors', () => {
   it('is CommonJS compatible', () => {
     assert.strictEqual(typeof require('../lib'), 'object');
     assert.strictEqual(typeof require('../lib').FeathersError, 'function');

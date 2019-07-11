@@ -1,5 +1,5 @@
 import assert from 'assert';
-import feathers, { Application, HookContext } from '@feathersjs/feathers';
+import feathers, { Application, HookContext } from '@ihadeed/feathers';
 import { channels } from '../../src/channels';
 import { Channel } from '../../src/channels/channel/base';
 import { CombinedChannel } from '../../lib/channels/channel/combined';

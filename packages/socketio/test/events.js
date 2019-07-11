@@ -1,6 +1,6 @@
 const assert = require('assert');
 const io = require('socket.io-client');
-const { verify } = require('@feathersjs/tests/lib/fixture');
+const { verify } = require('@ihadeed/tests/lib/fixture');
 
 module.exports = function (name, options) {
   const call = (method, ...args) => {

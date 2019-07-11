@@ -1,10 +1,10 @@
 import { flatten, omit, merge } from 'lodash';
-import { HookContext } from '@feathersjs/feathers';
-import { NotAuthenticated } from '@feathersjs/errors';
+import { HookContext } from '@ihadeed/feathers';
+import { NotAuthenticated } from '@ihadeed/errors';
 import Debug from 'debug';
 import { AuthenticationService } from '../service';
 
-const debug = Debug('@feathersjs/authentication/hooks/authenticate');
+const debug = Debug('@ihadeed/authentication/hooks/authenticate');
 
 export interface AuthenticateHookSettings {
   service?: string;

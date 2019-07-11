@@ -10,7 +10,7 @@ import {
   createSymbol
 } from '../src';
 
-describe('@feathersjs/commons utils', () => {
+describe('@ihadeed/commons utils', () => {
   it('stripSlashes', () => {
     expect(stripSlashes('some/thing')).to.equal('some/thing');
     expect(stripSlashes('/some/thing')).to.equal('some/thing');

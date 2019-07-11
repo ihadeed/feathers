@@ -2,7 +2,7 @@ import assert from 'assert';
 import { ObjectId } from 'mongodb';
 import { filterQuery } from '../src';
 
-describe('@feathersjs/adapter-commons/filterQuery', () => {
+describe('@ihadeed/adapter-commons/filterQuery', () => {
   describe('$sort', () => {
     it('returns $sort when present in query', () => {
       const originalQuery = { $sort: { name: 1 } };

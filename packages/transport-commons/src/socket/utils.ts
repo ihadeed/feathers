@@ -1,11 +1,11 @@
 import Debug from 'debug';
 import { isEqual } from 'lodash';
-import errors from '@feathersjs/errors';
-import { HookContext, Application } from '@feathersjs/feathers';
+import errors from '@ihadeed/errors';
+import { HookContext, Application } from '@ihadeed/feathers';
 import { CombinedChannel } from '../channels/channel/combined';
 import { RealTimeConnection } from '../channels/channel/base';
 
-const debug = Debug('@feathersjs/transport-commons');
+const debug = Debug('@ihadeed/transport-commons');
 
 export const paramsPositions: { [key: string]: number } = {
   find: 0,

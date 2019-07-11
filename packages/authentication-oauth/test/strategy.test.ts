@@ -1,8 +1,8 @@
 import { strict as assert } from 'assert';
 import { app, TestOAuthStrategy } from './fixture';
-import { AuthenticationService } from '@feathersjs/authentication/lib';
+import { AuthenticationService } from '@ihadeed/authentication/lib';
 
-describe('@feathersjs/authentication-oauth/strategy', () => {
+describe('@ihadeed/authentication-oauth/strategy', () => {
   const authService: AuthenticationService = app.service('authentication');
   const [ strategy ] = authService.getStrategies('test') as TestOAuthStrategy[];
 

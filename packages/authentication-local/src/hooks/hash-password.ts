@@ -1,9 +1,9 @@
 import { get, set, cloneDeep } from 'lodash';
-import { BadRequest } from '@feathersjs/errors';
+import { BadRequest } from '@ihadeed/errors';
 import Debug from 'debug';
-import { HookContext } from '@feathersjs/feathers';
+import { HookContext } from '@ihadeed/feathers';
 
-const debug = Debug('@feathersjs/authentication-local/hooks/hash-password');
+const debug = Debug('@ihadeed/authentication-local/hooks/hash-password');
 
 export interface HashPasswordOptions {
   authentication?: string;

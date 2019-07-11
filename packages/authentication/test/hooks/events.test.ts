@@ -1,5 +1,5 @@
 import assert from 'assert';
-import feathers, { Params, HookContext } from '@feathersjs/feathers';
+import feathers, { Params, HookContext } from '@ihadeed/feathers';
 
 import hook from '../../src/hooks/events';
 import { AuthenticationRequest, AuthenticationResult } from '../../src/core';

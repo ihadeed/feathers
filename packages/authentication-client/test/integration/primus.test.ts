@@ -2,9 +2,9 @@
 import Primus from 'primus';
 // @ts-ignore
 import Emitter from 'primus-emitter';
-import feathers, { Application } from '@feathersjs/feathers';
-import primusClient from '@feathersjs/primus-client';
-import primus from '@feathersjs/primus';
+import feathers, { Application } from '@ihadeed/feathers';
+import primusClient from '@ihadeed/primus-client';
+import primus from '@ihadeed/primus';
 
 import authClient from '../../src';
 import getApp from './fixture';
@@ -19,7 +19,7 @@ const Socket = Primus.createSocket({
   }
 });
 
-describe('@feathersjs/authentication-client Primus integration', () => {
+describe('@ihadeed/authentication-client Primus integration', () => {
   let app: Application;
   let server: any;
 

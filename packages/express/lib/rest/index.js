@@ -1,9 +1,9 @@
-const { stripSlashes } = require('@feathersjs/commons');
-const debug = require('debug')('@feathersjs/express/rest');
+const { stripSlashes } = require('@ihadeed/commons');
+const debug = require('debug')('@ihadeed/express/rest');
 const { parseAuthentication } = require('../authentication');
 const getHandler = require('./getHandler');
 
-const HTTP_METHOD = Symbol('@feathersjs/express/rest/HTTP_METHOD');
+const HTTP_METHOD = Symbol('@ihadeed/express/rest/HTTP_METHOD');
 
 function httpMethod (verb, uris) {
   return method => {
@@ -91,11 +91,11 @@ function rest (handler = formatter) {
     const app = this;
 
     if (typeof app.route !== 'function') {
-      throw new Error('@feathersjs/express/rest needs an Express compatible app. Feathers apps have to wrapped with feathers-express first.');
+      throw new Error('@ihadeed/express/rest needs an Express compatible app. Feathers apps have to wrapped with feathers-express first.');
     }
 
     if (!app.version || app.version < '3.0.0') {
-      throw new Error(`@feathersjs/express/rest requires an instance of a Feathers application version 3.x or later (got ${app.version})`);
+      throw new Error(`@ihadeed/express/rest requires an instance of a Feathers application version 3.x or later (got ${app.version})`);
     }
 
     app.rest = {

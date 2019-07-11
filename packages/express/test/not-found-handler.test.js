@@ -1,6 +1,6 @@
 const chai = require('chai');
 const sinonChai = require('sinon-chai');
-const errors = require('@feathersjs/errors');
+const errors = require('@ihadeed/errors');
 
 const handler = require('../lib/not-found-handler');
 

@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { HookContext } from '@feathersjs/feathers';
+import { HookContext } from '@ihadeed/feathers';
 import { hooks } from '../../src';
 
 const { protect } = hooks;
@@ -165,7 +165,7 @@ function testOmit (title: string, property: string) {
   });
 }
 
-describe('@feathersjs/authentication-local/hooks/protect', () => {
+describe('@ihadeed/authentication-local/hooks/protect', () => {
   it('does nothing when called with no result', () => {
     const fn = protect();
     const original = {} as unknown as HookContext;

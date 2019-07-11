@@ -1,7 +1,7 @@
-import { NotAuthenticated } from '@feathersjs/errors';
+import { NotAuthenticated } from '@ihadeed/errors';
 import { omit } from 'lodash';
 import { AuthenticationRequest } from './core';
-import { Params } from '@feathersjs/feathers';
+import { Params } from '@ihadeed/feathers';
 import { IncomingMessage } from 'http';
 import { AuthenticationBaseStrategy } from './strategy';
 

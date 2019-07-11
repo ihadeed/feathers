@@ -1,5 +1,5 @@
-import { HookContext } from '@feathersjs/feathers';
-import { stripSlashes } from '@feathersjs/commons';
+import { HookContext } from '@ihadeed/feathers';
+import { stripSlashes } from '@ihadeed/commons';
 
 export const authentication = () => {
   return (context: HookContext) => {

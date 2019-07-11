@@ -1,15 +1,15 @@
 const assert = require('assert');
 const axios = require('axios');
 
-const feathers = require('@feathersjs/feathers');
-const { BadRequest } = require('@feathersjs/errors');
-const { Service } = require('@feathersjs/tests/lib/fixture');
-const { crud } = require('@feathersjs/tests/lib/crud');
+const feathers = require('@ihadeed/feathers');
+const { BadRequest } = require('@ihadeed/errors');
+const { Service } = require('@ihadeed/tests/lib/fixture');
+const { crud } = require('@ihadeed/tests/lib/crud');
 
 const expressify = require('../lib');
 const { rest } = expressify;
 
-describe('@feathersjs/express/rest provider', () => {
+describe('@ihadeed/express/rest provider', () => {
   describe('base functionality', () => {
     it('throws an error if you did not expressify', () => {
       const app = feathers();
@@ -18,7 +18,7 @@ describe('@feathersjs/express/rest provider', () => {
         app.configure(rest());
         assert.ok(false, 'Should never get here');
       } catch (e) {
-        assert.strictEqual(e.message, '@feathersjs/express/rest needs an Express compatible app. Feathers apps have to wrapped with feathers-express first.');
+        assert.strictEqual(e.message, '@ihadeed/express/rest needs an Express compatible app. Feathers apps have to wrapped with feathers-express first.');
       }
     });
 
@@ -31,7 +31,7 @@ describe('@feathersjs/express/rest provider', () => {
 
         assert.ok(false, 'Should never get here');
       } catch (e) {
-        assert.strictEqual(e.message, '@feathersjs/express/rest requires an instance of a Feathers application version 3.x or later (got 2.9.9)');
+        assert.strictEqual(e.message, '@ihadeed/express/rest requires an instance of a Feathers application version 3.x or later (got 2.9.9)');
       }
     });
 

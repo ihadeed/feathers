@@ -1,10 +1,10 @@
 import { AuthenticationClient, AuthenticationClientOptions } from './core';
 import * as hooks from './hooks';
-import { Application } from '@feathersjs/feathers';
-import { AuthenticationResult, AuthenticationRequest } from '@feathersjs/authentication';
+import { Application } from '@ihadeed/feathers';
+import { AuthenticationResult, AuthenticationRequest } from '@ihadeed/authentication';
 import { Storage, MemoryStorage, StorageWrapper } from './storage';
 
-declare module '@feathersjs/feathers' {
+declare module '@ihadeed/feathers' {
   interface Application<ServiceTypes = {}> {
     io?: any;
     rest?: any;

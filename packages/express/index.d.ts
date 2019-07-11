@@ -1,4 +1,4 @@
-import { Application as FeathersApplication } from '@feathersjs/feathers';
+import { Application as FeathersApplication } from '@ihadeed/feathers';
 import express from 'express';
 
 declare const feathersExpress: FeathersExpress;

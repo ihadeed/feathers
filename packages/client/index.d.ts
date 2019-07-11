@@ -1,9 +1,9 @@
-import feathers from '@feathersjs/feathers';
-import authentication from '@feathersjs/authentication-client';
-import errors from '@feathersjs/errors';
-import primus from '@feathersjs/primus-client';
-import rest from '@feathersjs/rest-client';
-import socketio from '@feathersjs/socketio-client';
+import feathers from '@ihadeed/feathers';
+import authentication from '@ihadeed/authentication-client';
+import errors from '@ihadeed/errors';
+import primus from '@ihadeed/primus-client';
+import rest from '@ihadeed/rest-client';
+import socketio from '@ihadeed/socketio-client';
 
 export as namespace feathers;
 

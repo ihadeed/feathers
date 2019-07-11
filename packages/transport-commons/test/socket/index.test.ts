@@ -1,10 +1,10 @@
 import assert from 'assert';
 import { EventEmitter } from 'events';
-import feathers, { Application } from '@feathersjs/feathers';
+import feathers, { Application } from '@ihadeed/feathers';
 
 import { socket as commons, SocketOptions } from '../../src/socket';
 
-describe('@feathersjs/transport-commons', () => {
+describe('@ihadeed/transport-commons', () => {
   let provider: EventEmitter;
   let options: SocketOptions;
   let app: Application;

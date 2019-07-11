@@ -1,11 +1,11 @@
 import assert from 'assert';
-import { NotImplemented } from '@feathersjs/errors';
+import { NotImplemented } from '@ihadeed/errors';
 import { AdapterService, InternalServiceMethods } from '../src';
-import { Params, Id, NullableId } from '@feathersjs/feathers';
+import { Params, Id, NullableId } from '@ihadeed/feathers';
 
 const METHODS: [ 'find', 'get', 'create', 'update', 'patch', 'remove' ] = [ 'find', 'get', 'create', 'update', 'patch', 'remove' ];
 
-describe('@feathersjs/adapter-commons/service', () => {
+describe('@ihadeed/adapter-commons/service', () => {
   class CustomService extends AdapterService {
   }
 

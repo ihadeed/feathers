@@ -1,5 +1,5 @@
 import { omit } from 'lodash';
-import { HookContext } from '@feathersjs/feathers';
+import { HookContext } from '@ihadeed/feathers';
 
 export default (...fields: string[]) => (context: HookContext) => {
   const result = context.dispatch || context.result;

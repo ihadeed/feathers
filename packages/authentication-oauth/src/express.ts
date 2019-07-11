@@ -1,18 +1,18 @@
 // @ts-ignore
 import { express as grantExpress } from 'grant';
 import Debug from 'debug';
-import { Application } from '@feathersjs/feathers';
-import { AuthenticationService, AuthenticationResult } from '@feathersjs/authentication';
+import { Application } from '@ihadeed/feathers';
+import { AuthenticationService, AuthenticationResult } from '@ihadeed/authentication';
 import qs from 'querystring';
 import {
   Application as ExpressApplication,
   original as express
-} from '@feathersjs/express';
+} from '@ihadeed/express';
 import { OauthSetupSettings } from './utils';
 import { OAuthStrategy } from './strategy';
 
 const grant = grantExpress();
-const debug = Debug('@feathersjs/authentication-oauth/express');
+const debug = Debug('@ihadeed/authentication-oauth/express');
 
 export default (options: OauthSetupSettings) => {
   return (feathersApp: Application) => {

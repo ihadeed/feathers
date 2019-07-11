@@ -1,11 +1,11 @@
 import Debug from 'debug';
 import { merge, get } from 'lodash';
-import { NotAuthenticated } from '@feathersjs/errors';
+import { NotAuthenticated } from '@ihadeed/errors';
 import { AuthenticationBase, AuthenticationResult, AuthenticationRequest } from './core';
 import { connection, events } from './hooks';
-import { Params, ServiceMethods } from '@feathersjs/feathers';
+import { Params, ServiceMethods } from '@ihadeed/feathers';
 
-const debug = Debug('@feathersjs/authentication/service');
+const debug = Debug('@ihadeed/authentication/service');
 
 export class AuthenticationService extends AuthenticationBase implements Partial<ServiceMethods<AuthenticationResult>> {
   /**

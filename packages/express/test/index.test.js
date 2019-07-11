@@ -4,11 +4,11 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
-const feathers = require('@feathersjs/feathers');
+const feathers = require('@ihadeed/feathers');
 
 const expressify = require('../lib');
 
-describe('@feathersjs/express', () => {
+describe('@ihadeed/express', () => {
   const service = {
     get (id) {
       return Promise.resolve({ id });
@@ -52,7 +52,7 @@ describe('@feathersjs/express', () => {
     try {
       expressify({});
     } catch (e) {
-      assert.strictEqual(e.message, '@feathersjs/express requires a valid Feathers application instance');
+      assert.strictEqual(e.message, '@ihadeed/express requires a valid Feathers application instance');
     }
 
     try {
@@ -61,7 +61,7 @@ describe('@feathersjs/express', () => {
 
       expressify(app);
     } catch (e) {
-      assert.strictEqual(e.message, '@feathersjs/express requires an instance of a Feathers application version 3.x or later (got 2.9.9)');
+      assert.strictEqual(e.message, '@ihadeed/express requires an instance of a Feathers application version 3.x or later (got 2.9.9)');
     }
 
     try {
@@ -70,7 +70,7 @@ describe('@feathersjs/express', () => {
 
       expressify(app);
     } catch (e) {
-      assert.strictEqual(e.message, '@feathersjs/express requires an instance of a Feathers application version 3.x or later (got unknown)');
+      assert.strictEqual(e.message, '@ihadeed/express requires an instance of a Feathers application version 3.x or later (got unknown)');
     }
   });
 

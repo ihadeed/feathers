@@ -1,13 +1,13 @@
 import bcrypt from 'bcryptjs';
 import { get, omit } from 'lodash';
 import Debug from 'debug';
-import { NotAuthenticated } from '@feathersjs/errors';
-import { Query, Params } from '@feathersjs/feathers';
+import { NotAuthenticated } from '@ihadeed/errors';
+import { Query, Params } from '@ihadeed/feathers';
 import {
   AuthenticationRequest, AuthenticationBaseStrategy
-} from '@feathersjs/authentication';
+} from '@ihadeed/authentication';
 
-const debug = Debug('@feathersjs/authentication-local/strategy');
+const debug = Debug('@ihadeed/authentication-local/strategy');
 
 export class LocalStrategy extends AuthenticationBaseStrategy {
   verifyConfiguration () {

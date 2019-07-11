@@ -1,8 +1,8 @@
 const assert = require('assert');
 const axios = require('axios');
-const feathers = require('@feathersjs/feathers');
-const baseTests = require('@feathersjs/tests/lib/client');
-const errors = require('@feathersjs/errors');
+const feathers = require('@ihadeed/feathers');
+const baseTests = require('@ihadeed/tests/lib/client');
+const errors = require('@ihadeed/errors');
 const server = require('./server');
 const rest = require('../lib/index');
 

@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-describe('@feathersjs/transport-commons', () => {
+describe('@ihadeed/transport-commons', () => {
   it('re-exports commons', () => {
     const commons = require('../lib');
 

@@ -1,5 +1,5 @@
-import { NotAuthenticated } from '@feathersjs/errors';
-import { Params } from '@feathersjs/feathers';
+import { NotAuthenticated } from '@ihadeed/errors';
+import { Params } from '@ihadeed/feathers';
 
 import { AuthenticationRequest } from '../src/core';
 import { IncomingMessage } from 'http';

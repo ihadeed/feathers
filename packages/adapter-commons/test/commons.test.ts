@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { select } from '../src';
 
-describe('@feathersjs/adapter-commons', () => {
+describe('@ihadeed/adapter-commons', () => {
   describe('select', () => {
     it('select', () => {
       const selector = select({

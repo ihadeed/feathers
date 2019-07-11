@@ -4,10 +4,10 @@ import querystring from 'querystring';
 import Debug from 'debug';
 import {
   AuthenticationRequest, AuthenticationBaseStrategy, AuthenticationResult
-} from '@feathersjs/authentication';
-import { Params } from '@feathersjs/feathers';
+} from '@ihadeed/authentication';
+import { Params } from '@ihadeed/feathers';
 
-const debug = Debug('@feathersjs/authentication-oauth/strategy');
+const debug = Debug('@ihadeed/authentication-oauth/strategy');
 
 export interface OAuthProfile {
   id?: string|number;

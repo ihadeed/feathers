@@ -1,5 +1,5 @@
 import { AuthenticationStrategy, AuthenticationBase } from './core';
-import { Application, Service } from '@feathersjs/feathers';
+import { Application, Service } from '@ihadeed/feathers';
 
 export class AuthenticationBaseStrategy implements AuthenticationStrategy {
   authentication?: AuthenticationBase;

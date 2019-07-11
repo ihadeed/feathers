@@ -1,13 +1,13 @@
 import axios from 'axios';
-import feathers, { Application as FeathersApplication } from '@feathersjs/feathers';
-import * as express from '@feathersjs/express';
-import rest from '@feathersjs/rest-client';
+import feathers, { Application as FeathersApplication } from '@ihadeed/feathers';
+import * as express from '@ihadeed/express';
+import rest from '@ihadeed/rest-client';
 
 import authClient from '../../src';
 import getApp from './fixture';
 import commonTests from './commons';
 
-describe('@feathersjs/authentication-client Express integration', () => {
+describe('@ihadeed/authentication-client Express integration', () => {
   let app: express.Application;
   let server: any;
 

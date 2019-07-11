@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { EventEmitter } from 'events';
-import feathers, { Application, Params } from '@feathersjs/feathers';
-import errors from '@feathersjs/errors';
+import feathers, { Application, Params } from '@ihadeed/feathers';
+import errors from '@ihadeed/errors';
 
 import { routing } from '../../src/routing';
 import {
