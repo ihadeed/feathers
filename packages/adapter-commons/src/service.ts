@@ -46,7 +46,7 @@ export class AdapterService<T = any> implements ServiceMethods<T> {
     this.options = Object.assign({
       id: 'id',
       events: [],
-      paginate: {},
+      paginate: false,
       multi: false,
       filters: [],
       whitelist: [],
