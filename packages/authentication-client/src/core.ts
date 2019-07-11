@@ -37,7 +37,7 @@ export class AuthenticationClient<Entity extends string = never, EntityType = an
   options: AuthenticationClientOptions;
 
   constructor (app: Application, options: AuthenticationClientOptions) {
-    const socket = app.io || app.primus;
+    const socket = app.io;
     const storage = new StorageWrapper(app.get('storage') || options.storage);
 
     this.app = app;

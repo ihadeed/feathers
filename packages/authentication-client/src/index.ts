@@ -8,7 +8,6 @@ declare module '@ihadeed/feathers' {
   interface Application<ServiceTypes = {}> {
     io?: any;
     rest?: any;
-    primus?: any;
     authentication: AuthenticationClient;
     authenticate (authentication?: AuthenticationRequest): Promise<AuthenticationResult>;
     reAuthenticate (force: boolean): Promise<AuthenticationResult>;
