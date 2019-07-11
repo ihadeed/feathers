@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/mongoose",
   "description": "A Feathers service adapter for the Mongoose ORM",
-  "version": "8.0.0",
+  "version": "5.0.0",
   "homepage": "https://github.com/feathersjs-ecosystem/feathers-mongoose",
   "main": "lib/",
   "keywords": [
@@ -57,14 +57,14 @@
     "mongoose": "latest"
   },
   "dependencies": {
-    "@ihadeed/adapter-commons": "^4.0.0-pre.4",
-    "@ihadeed/commons": "^4.0.0",
-    "@ihadeed/errors": "^4.0.0-pre.4"
+    "@ihadeed/adapter-commons": "^5.0.0",
+    "@ihadeed/commons": "^5.0.0",
+    "@ihadeed/errors": "^5.0.0"
   },
   "devDependencies": {
-    "@ihadeed/express": "^4.0.0-pre.4",
-    "@ihadeed/feathers": "^4.0.0-pre.4",
-    "@ihadeed/socketio": "^4.0.0-pre.4",
+    "@ihadeed/express": "^5.0.0",
+    "@ihadeed/feathers": "^5.0.0",
+    "@ihadeed/socketio": "^5.0.0",
     "@types/mongoose": "^5.5.7",
     "mongoose": "latest",
     "run-rs": "^0.5.2",
