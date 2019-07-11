@@ -4,8 +4,6 @@
   "version": "5.3.0",
   "homepage": "https://github.com/feathersjs-ecosystem/feathers-mongoose",
   "scripts": {
-    "postinstall": "npm run build",
-    "prepublish": "npm run build",
     "build": "tsc"
   },
   "main": "dist/",

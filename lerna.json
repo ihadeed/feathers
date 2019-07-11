@@ -1,19 +1,8 @@
 {
-  "ci": false,
   "packages": [
     "packages/*"
   ],
   "version": "5.3.0",
-  "ignoreChanges": [
-    "**/changelog.md",
-    "**/CHANGELOG.md",
-    "**/package-lock.json",
-    "**/yarn.lock",
-    "**/test/**",
-    "lerna.json",
-    "readme.md",
-    "package.json"
-  ],
   "publishConfig": {
     "access": "public"
   }

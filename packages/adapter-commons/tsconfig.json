@@ -4,7 +4,8 @@
     "src/**/*.ts"
   ],
   "compilerOptions": {
-    "outDir": "lib"    
+    "outDir": "lib",
+    "target": "es2018"
   },
   "exclude": ["node_modules"]
 }

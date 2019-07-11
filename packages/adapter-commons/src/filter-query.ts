@@ -1,5 +1,6 @@
 import { _ } from '@ihadeed/commons';
 import { BadRequest } from '@ihadeed/errors';
+import { Params, Query } from '@ihadeed/feathers';
 
 function parse (number: any) {
   if (typeof number !== 'undefined') {
@@ -97,7 +98,7 @@ export const OPERATORS = ['$in', '$nin', '$lt', '$lte', '$gt', '$gte', '$ne', '$
 // Converts Feathers special query parameters and pagination settings
 // and returns them separately a `filters` and the rest of the query
 // as `query`
-export default function filterQuery (query: any, options: any = {}) {
+export default function filterQuery<T = any>(query: Query<T>, options: any = {}): Params<T> {
   const {
     filters: additionalFilters = {},
     operators: additionalOperators = []

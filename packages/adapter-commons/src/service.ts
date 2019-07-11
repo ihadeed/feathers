@@ -1,5 +1,14 @@
 import { BadRequest, MethodNotAllowed, NotImplemented } from '@ihadeed/errors';
-import { FindOneParams, Id, NullableId, Paginated, PaginationParams, Params, ServiceMethods } from '@ihadeed/feathers';
+import {
+  FindOneParams,
+  Id,
+  NullableId,
+  Paginated,
+  PaginationParams,
+  Params,
+  Query,
+  ServiceMethods,
+} from '@ihadeed/feathers';
 import filterQuery from './filter-query';
 
 const callMethod = (self: any, name: any, ...args: any[]) => {
@@ -71,7 +80,7 @@ export class AdapterService<T = any> implements ServiceMethods<T> {
     return this.options.events;
   }
 
-  filterQuery(params?: Params<T>, opts?: any) {
+  filterQuery(params?: Params<T>, opts?: any): Params<T> & any {
     params = params || {};
     opts = opts || {};
     params.query = params.query || {};
