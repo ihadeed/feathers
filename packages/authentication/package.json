@@ -1,10 +1,14 @@
 {
   "name": "@feathersjs/authentication",
   "description": "Add Authentication to your FeathersJS app.",
-  "version": "4.0.0-pre.4",
+  "version": "4.0.0-pre.5",
   "homepage": "https://feathersjs.com",
   "main": "lib/",
+<<<<<<< HEAD
   "types": "lib/index.d.ts",
+=======
+  "types": "lib/",
+>>>>>>> 2efa6468f9b93810b4cbc35e6ec0815dc1cb654f
   "keywords": [
     "feathers",
     "feathers-plugin"
@@ -39,25 +43,25 @@
     "access": "public"
   },
   "dependencies": {
-    "@feathersjs/errors": "^4.0.0-pre.4",
+    "@feathersjs/errors": "^4.0.0-pre.5",
     "debug": "^4.1.1",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "@feathersjs/feathers": "^4.0.0-pre.4",
+    "@feathersjs/feathers": "^4.0.0-pre.5",
     "@types/debug": "^4.1.4",
     "@types/jsonwebtoken": "^8.3.2",
-    "@types/lodash": "^4.14.132",
-    "@types/mocha": "^5.2.6",
-    "@types/node": "^12.0.2",
-    "@types/uuid": "^3.4.4",
+    "@types/lodash": "^4.14.136",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.6.2",
+    "@types/uuid": "^3.4.5",
     "feathers-memory": "^4.0.0",
     "mocha": "^6.1.4",
     "shx": "^0.3.2",
-    "ts-node": "^8.2.0",
-    "typescript": "^3.4.5"
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
   },
-  "gitHead": "f20fd5899a217afad7ad2a45b3fc3dfdc788c714"
+  "gitHead": "1de7b81fcae0effc397e548cf9b96d79c2942237"
 }

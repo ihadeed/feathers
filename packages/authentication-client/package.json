@@ -1,10 +1,15 @@
 {
   "name": "@feathersjs/authentication-client",
   "description": "The authentication plugin for feathers-client",
-  "version": "4.0.0-pre.4",
+  "version": "4.0.0-pre.5",
   "homepage": "https://feathersjs.com",
+<<<<<<< HEAD
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+=======
+  "main": "lib/",
+  "types": "lib/",
+>>>>>>> 2efa6468f9b93810b4cbc35e6ec0815dc1cb654f
   "keywords": [
     "feathers",
     "feathers-plugin"
@@ -39,28 +44,28 @@
     "access": "public"
   },
   "dependencies": {
-    "@feathersjs/commons": "^4.0.0-pre.4",
-    "@feathersjs/errors": "^4.0.0-pre.4",
+    "@feathersjs/commons": "^4.0.0-pre.5",
+    "@feathersjs/errors": "^4.0.0-pre.5",
     "debug": "^4.1.1"
   },
   "devDependencies": {
-    "@feathersjs/authentication": "^4.0.0-pre.4",
-    "@feathersjs/authentication-local": "^4.0.0-pre.4",
-    "@feathersjs/express": "^4.0.0-pre.4",
-    "@feathersjs/feathers": "^4.0.0-pre.4",
-    "@feathersjs/primus": "^4.0.0-pre.4",
-    "@feathersjs/primus-client": "^4.0.0-pre.4",
-    "@feathersjs/rest-client": "^4.0.0-pre.4",
-    "@feathersjs/socketio": "^4.0.0-pre.4",
-    "@feathersjs/socketio-client": "^4.0.0-pre.4",
+    "@feathersjs/authentication": "^4.0.0-pre.5",
+    "@feathersjs/authentication-local": "^4.0.0-pre.5",
+    "@feathersjs/express": "^4.0.0-pre.5",
+    "@feathersjs/feathers": "^4.0.0-pre.5",
+    "@feathersjs/primus": "^4.0.0-pre.5",
+    "@feathersjs/primus-client": "^4.0.0-pre.5",
+    "@feathersjs/rest-client": "^4.0.0-pre.5",
+    "@feathersjs/socketio": "^4.0.0-pre.5",
+    "@feathersjs/socketio-client": "^4.0.0-pre.5",
     "@types/debug": "^4.1.4",
-    "@types/mocha": "^5.2.6",
-    "@types/node": "^12.0.2",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.6.2",
     "axios": "^0.19.0",
     "mocha": "^6.1.4",
     "shx": "^0.3.2",
-    "ts-node": "^8.2.0",
-    "typescript": "^3.4.5"
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
   },
-  "gitHead": "f20fd5899a217afad7ad2a45b3fc3dfdc788c714"
+  "gitHead": "1de7b81fcae0effc397e548cf9b96d79c2942237"
 }
