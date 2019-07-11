@@ -22,5 +22,8 @@
     "lerna.json",
     "readme.md",
     "package.json"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
