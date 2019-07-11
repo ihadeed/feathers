@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/client",
   "description": "A module that consolidates Feathers client modules for REST (jQuery, Request, Superagent) and Websocket (Socket.io, Primus) connections",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/feathersjs/feathers.git"

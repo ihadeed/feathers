@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/mongoose",
   "description": "A Feathers service adapter for the Mongoose ORM",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "homepage": "https://github.com/feathersjs-ecosystem/feathers-mongoose",
   "main": "lib/",
   "keywords": [
