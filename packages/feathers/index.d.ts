@@ -7,207 +7,230 @@ declare const createApplication: Feathers;
 export = createApplication;
 
 interface Feathers {
-    <T = any>(): createApplication.Application<T>;
-    readonly ACTIVATE_HOOKS: unique symbol;
-    version: string;
-    default: Feathers;
-    // TODO: Write a definition for activateHooks.
-    // activateHooks(): void
+  <T = any>(): createApplication.Application<T>;
+
+  readonly ACTIVATE_HOOKS: unique symbol;
+  version: string;
+  default: Feathers;
+  // TODO: Write a definition for activateHooks.
+  // activateHooks(): void
 }
 
 declare namespace createApplication {
-    type Id = number | string;
-    type NullableId = Id | null;
+  type Id = number | string;
+  type NullableId = Id | null;
 
-    interface Query {
-        [key: string]: any;
-    }
+  interface PaginationOptions {
+    default: number;
+    max: number;
+  }
 
-    interface PaginationOptions {
-        default: number;
-        max: number;
-    }
+  type KeyOf<T> = Extract<keyof T, string>;
 
-    type ClientSideParams = Pick<Params, 'query' | 'paginate'>;
-    type ServerSideParams = Params;
+  type QuerySortOpts<T> = {
+    [K in KeyOf<T>]?: -1 | 1;
+  }
 
-    interface Params {
-        query?: Query;
-        paginate?: false | Pick<PaginationOptions, 'max'>;
+  interface QueryOpts<T, K extends KeyOf<T> = any> {
+    $in?: T[K][];
+    $nin?: T[K][];
+    $lt?: T[K];
+    $lte?: T[K];
+    $gt?: T[K];
+    $gte?: T[K];
+    $ne?: T[K];
+  }
 
-        [key: string]: any; // (JL) not sure if we want this
-    }
+  type QueryOrBlock<T> = {
+    [K in KeyOf<T>]?: T[K] | QueryOpts<T, K>;
+  };
 
-    interface Paginated<T> {
-        total: number;
-        limit: number;
-        skip: number;
-        data: T[];
-    }
+  interface BaseQuery<T> {
+    $limit?: number;
+    $skip?: number;
+    $sort?: QuerySortOpts<T>;
+    $select?: KeyOf<T>[];
+    $or?: QueryOrBlock<T>[];
+  }
 
-    // tslint:disable-next-line void-return
-    type Hook = (hook: HookContext) => (Promise<HookContext | void> | HookContext | void);
+  interface Params<T> {
+    query?: BaseQuery<T>;
+    paginate?: false | Pick<PaginationOptions, 'max'>;
 
-    interface HookContext<T = any> {
-        /**
-         * A read only property that contains the Feathers application object. This can be used to
-         * retrieve other services (via context.app.service('name')) or configuration values.
-         */
-        readonly app: Application;
-        /**
-         * A writeable property containing the data of a create, update and patch service
-         * method call.
-         */
-        data?: T;
-        /**
-         * A writeable property with the error object that was thrown in a failed method call.
-         * It is only available in error hooks.
-         */
-        error?: any;
-        /**
-         * A writeable property and the id for a get, remove, update and patch service
-         * method call. For remove, update and patch context.id can also be null when
-         * modifying multiple entries. In all other cases it will be undefined.
-         */
-        id?: string | number;
-        /**
-         * A read only property with the name of the service method (one of find, get,
-         * create, update, patch, remove).
-         */
-        readonly method: string;
-        /**
-         * A writeable property that contains the service method parameters (including
-         * params.query).
-         */
-        params: Params;
-        /**
-         * A read only property and contains the service name (or path) without leading or
-         * trailing slashes.
-         */
-        readonly path: string;
-        /**
-         * A writeable property containing the result of the successful service method call.
-         * It is only available in after hooks.
-         *
-         * `context.result` can also be set in
-         *
-         *  - A before hook to skip the actual service method (database) call
-         *  - An error hook to swallow the error and return a result instead
-         */
-        result?: T;
-        /**
-         * A read only property and contains the service this hook currently runs on.
-         */
-        readonly service: Service<T>;
-        /**
-         * A writeable, optional property and contains a 'safe' version of the data that
-         * should be sent to any client. If context.dispatch has not been set context.result
-         * will be sent to the client instead.
-         */
-        dispatch?: T;
-        /**
-         * A writeable, optional property that allows to override the standard HTTP status
-         * code that should be returned.
-         */
-        statusCode?: number;
-        /**
-         * A read only property with the hook type (one of before, after or error).
-         */
-        readonly type: 'before' | 'after' | 'error';
-        /**
-         * The real-time connection object
-         */
-        connection?: any;
-    }
+    [key: string]: any; // (JL) not sure if we want this
+  }
 
-    interface HookMap {
-        all: Hook | Hook[];
-        find: Hook | Hook[];
-        get: Hook | Hook[];
-        create: Hook | Hook[];
-        update: Hook | Hook[];
-        patch: Hook | Hook[];
-        remove: Hook | Hook[];
-    }
+  interface Paginated<T> {
+    total: number;
+    limit: number;
+    skip: number;
+    data: T[];
+  }
 
-    interface HooksObject {
-        before: Partial<HookMap> | Hook | Hook[];
-        after: Partial<HookMap> | Hook | Hook[];
-        error: Partial<HookMap> | Hook | Hook[];
-        finally?: Partial<HookMap> | Hook | Hook[];
-    }
+  // tslint:disable-next-line void-return
+  type Hook = (hook: HookContext) => (Promise<HookContext | void> | HookContext | void);
 
-    interface ServiceMethods<T> {
-        [key: string]: any;
+  interface HookContext<T = any> {
+    /**
+     * A read only property that contains the Feathers application object. This can be used to
+     * retrieve other services (via context.app.service('name')) or configuration values.
+     */
+    readonly app: Application;
+    /**
+     * A writeable property containing the data of a create, update and patch service
+     * method call.
+     */
+    data?: T;
+    /**
+     * A writeable property with the error object that was thrown in a failed method call.
+     * It is only available in error hooks.
+     */
+    error?: any;
+    /**
+     * A writeable property and the id for a get, remove, update and patch service
+     * method call. For remove, update and patch context.id can also be null when
+     * modifying multiple entries. In all other cases it will be undefined.
+     */
+    id?: string | number;
+    /**
+     * A read only property with the name of the service method (one of find, get,
+     * create, update, patch, remove).
+     */
+    readonly method: string;
+    /**
+     * A writeable property that contains the service method parameters (including
+     * params.query).
+     */
+    params: Params<T>;
+    /**
+     * A read only property and contains the service name (or path) without leading or
+     * trailing slashes.
+     */
+    readonly path: string;
+    /**
+     * A writeable property containing the result of the successful service method call.
+     * It is only available in after hooks.
+     *
+     * `context.result` can also be set in
+     *
+     *  - A before hook to skip the actual service method (database) call
+     *  - An error hook to swallow the error and return a result instead
+     */
+    result?: T;
+    /**
+     * A read only property and contains the service this hook currently runs on.
+     */
+    readonly service: Service<T>;
+    /**
+     * A writeable, optional property and contains a 'safe' version of the data that
+     * should be sent to any client. If context.dispatch has not been set context.result
+     * will be sent to the client instead.
+     */
+    dispatch?: T;
+    /**
+     * A writeable, optional property that allows to override the standard HTTP status
+     * code that should be returned.
+     */
+    statusCode?: number;
+    /**
+     * A read only property with the hook type (one of before, after or error).
+     */
+    readonly type: 'before' | 'after' | 'error';
+    /**
+     * The real-time connection object
+     */
+    connection?: any;
+  }
 
-        find (params?: Params): Promise<T | T[] | Paginated<T>>;
+  interface HookMap {
+    all: Hook | Hook[];
+    find: Hook | Hook[];
+    get: Hook | Hook[];
+    create: Hook | Hook[];
+    update: Hook | Hook[];
+    patch: Hook | Hook[];
+    remove: Hook | Hook[];
+  }
 
-        get (id: Id, params?: Params): Promise<T>;
+  interface HooksObject {
+    before: Partial<HookMap> | Hook | Hook[];
+    after: Partial<HookMap> | Hook | Hook[];
+    error: Partial<HookMap> | Hook | Hook[];
+    finally?: Partial<HookMap> | Hook | Hook[];
+  }
 
-        create (data: Partial<T> | Array<Partial<T>>, params?: Params): Promise<T | T[]>;
+  interface ServiceMethods<T> {
+    [key: string]: any;
 
-        update (id: NullableId, data: T, params?: Params): Promise<T>;
+    find(params?: Params<T>): Promise<T> | Promise<T[]> | Promise<Paginated<T>>;
 
-        patch (id: NullableId, data: Partial<T>, params?: Params): Promise<T>;
+    get(id: Id, params?: Params<T>): Promise<T>;
 
-        remove (id: NullableId, params?: Params): Promise<T>;
-    }
+    create(data: Partial<T> | Array<Partial<T>>, params?: Params<T>): Promise<T> | Promise<T[]>;
 
-    interface SetupMethod {
-        setup (app: Application, path: string): void;
-    }
+    update(id: NullableId, data: T, params?: Params<T>): Promise<T>;
 
-    interface ServiceOverloads<T> {
-        create? (data: Array<Partial<T>>, params?: Params): Promise<T[]>;
+    patch(id: NullableId, data: Partial<T>, params?: Params<T>): Promise<T>;
 
-        create? (data: Partial<T>, params?: Params): Promise<T>;
+    remove(id: NullableId, params?: Params<T>): Promise<T>;
+  }
 
-        patch? (id: NullableId, data: Pick<T, keyof T>, params?: Params): Promise<T>;
-    }
+  interface SetupMethod {
+    setup(app: Application, path: string): void;
+  }
 
-    interface ServiceAddons<T> extends EventEmitter {
-        id?: any;
-        _serviceEvents: string[];
-        hooks (hooks: Partial<HooksObject>): this;
-    }
+  interface ServiceOverloads<T> {
+    create?(data: Array<Partial<T>>, params?: Params<T>): Promise<T[]>;
 
-    type Service<T> = ServiceOverloads<T> & ServiceAddons<T> & ServiceMethods<T>;
+    create?(data: Partial<T>, params?: Params<T>): Promise<T>;
 
-    type ServiceMixin = (service: Service<any>, path: string) => void;
+    patch?(id: NullableId, data: Pick<T, Extract<keyof T, string>>, params?: Params<T>): Promise<T>;
+  }
 
-    interface Application<ServiceTypes = {}> extends EventEmitter {
-        version: string;
+  interface ServiceAddons<T> extends EventEmitter {
+    id?: any;
+    _serviceEvents: string[];
 
-        services: keyof ServiceTypes extends never ? any : ServiceTypes;
+    hooks(hooks: Partial<HooksObject>): this;
+  }
 
-        mixins: ServiceMixin[];
+  type Service<T> = ServiceOverloads<T> & ServiceAddons<T> & ServiceMethods<T>;
 
-        methods: string[];
+  type ServiceMixin = (service: Service<any>, path: string) => void;
 
-        get (name: string): any;
+  interface Application<ServiceTypes = {}> extends EventEmitter {
+    version: string;
 
-        set (name: string, value: any): this;
+    services: Extract<keyof ServiceTypes, string> extends never ? any : ServiceTypes;
 
-        disable (name: string): this;
+    mixins: ServiceMixin[];
 
-        disabled (name: string): boolean;
+    methods: string[];
 
-        enable (name: string): this;
+    get(name: string): any;
 
-        enabled (name: string): boolean;
+    set(name: string, value: any): this;
 
-        configure (callback: (this: this, app: this) => void): this;
+    disable(name: string): this;
 
-        hooks (hooks: Partial<HooksObject>): this;
+    disabled(name: string): boolean;
 
-        setup (server?: any): this;
+    enable(name: string): this;
 
-        service<L extends keyof ServiceTypes> (location: L): ServiceTypes[L];
+    enabled(name: string): boolean;
 
-        service (location: string): keyof ServiceTypes extends never ? any : never;
+    configure(callback: (this: this, app: this) => void): this;
 
-        use (path: string, service: Partial<ServiceMethods<any> & SetupMethod> | Application, options?: any): this;
+    hooks(hooks: Partial<HooksObject>): this;
 
-        listen (port: number): http.Server;
-    }
+    setup(server?: any): this;
+
+    service<L extends Extract<keyof ServiceTypes, string>>(location: L): ServiceTypes[L] extends never ? Service<L> : ServiceTypes[L];
+
+    service(location: string): Extract<keyof ServiceTypes, string> extends never ? any : never;
+
+    use(path: string, service: Partial<ServiceMethods<any> & SetupMethod> | Application, options?: any): this;
+
+    listen(port: number): http.Server;
+  }
 }
