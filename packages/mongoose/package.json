@@ -37,19 +37,8 @@
   "bugs": {
     "url": "https://github.com/feathersjs-ecosystem/feathers-mongoose/issues"
   },
-  "engines": {
-    "node": ">= 6"
-  },
-  "semistandard": {
-    "env": [
-      "mocha"
-    ]
-  },
-  "directories": {
-    "lib": "lib"
-  },
   "peerDependencies": {
-    "mongoose": "latest"
+    "mongoose": "*"
   },
   "dependencies": {
     "@ihadeed/adapter-commons": "^5.4.0",
@@ -68,6 +57,5 @@
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0",
     "typescript": "^3.5.3"
-  },
-  "gitHead": "38b599e1fb3ed40cf1596369270153285f507aae"
+  }
 }
