@@ -31,7 +31,7 @@ export interface AuthenticationClientOptions {
   Authentication: ClientConstructor;
 }
 
-export class AuthenticationClient {
+export class AuthenticationClient<Entity extends string = never, EntityType = any>  {
   app: Application;
   authenticated: boolean;
   options: AuthenticationClientOptions;
@@ -118,7 +118,7 @@ export class AuthenticationClient {
     return Promise.resolve(null);
   }
 
-  reAuthenticate (force: boolean = false): Promise<AuthenticationResult> {
+  reAuthenticate (force: boolean = false): Promise<AuthenticationResult<Entity, EntityType>> {
     // Either returns the authentication state or
     // tries to re-authenticate with the stored JWT and strategy
     const authPromise = this.app.get('authentication');
@@ -141,7 +141,7 @@ export class AuthenticationClient {
     return authPromise;
   }
 
-  authenticate (authentication: AuthenticationRequest): Promise<AuthenticationResult> {
+  authenticate (authentication: AuthenticationRequest): Promise<AuthenticationResult<Entity, EntityType>> {
     if (!authentication) {
       return this.reAuthenticate();
     }

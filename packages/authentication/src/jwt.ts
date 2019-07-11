@@ -10,6 +10,7 @@ const SPLIT_HEADER = /(\S+)\s+(\S+)/;
 export class JWTStrategy extends AuthenticationBaseStrategy {
   get configuration () {
     const authConfig = this.authentication.configuration;
+    // @ts-ignore
     const config = super.configuration;
 
     return {
@@ -36,7 +37,7 @@ export class JWTStrategy extends AuthenticationBaseStrategy {
    * @param id The id to use
    * @param params Service call parameters
    */
-  async getEntity (id: string, params: Params) {
+  async getEntity (id: string, params: Params<any>) {
     const { entity } = this.configuration;
     const entityService = this.entityService;
 
@@ -53,7 +54,7 @@ export class JWTStrategy extends AuthenticationBaseStrategy {
     return entityService.get(id, { ...params, [entity]: result });
   }
 
-  async authenticate (authentication: AuthenticationRequest, params: Params) {
+  async authenticate (authentication: AuthenticationRequest, params: Params<any>) {
     const { accessToken } = authentication;
     const { entity } = this.configuration;
 

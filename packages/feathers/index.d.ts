@@ -53,7 +53,7 @@ declare namespace createApplication {
     $or?: QueryOrBlock<T>[];
   }
 
-  interface Params<T> {
+  interface Params<T = any> {
     query?: BaseQuery<T>;
     paginate?: boolean | number;
 
@@ -67,8 +67,10 @@ declare namespace createApplication {
     data: T[];
   }
 
+  type FindOneQuery<T> = BaseQuery<T> & { $limit: 1 };
+
   interface FindOneParams<T> extends Params<T> {
-    query: BaseQuery<T> & { $limit: 1 };
+    query: FindOneQuery<T>;
   }
 
   interface PaginationParams<T> extends Params<T> {

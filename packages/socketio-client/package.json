@@ -46,7 +46,8 @@
     "chai": "^4.2.0",
     "feathers-memory": "^4.0.0",
     "mocha": "^6.1.4",
-    "socket.io-client": "^2.2.0"
+    "socket.io-client": "^2.2.0",
+    "typescript": "^3.5.3"
   },
   "gitHead": "1de7b81fcae0effc397e548cf9b96d79c2942237"
 }

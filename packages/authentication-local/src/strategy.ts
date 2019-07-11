@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import { get, omit } from 'lodash';
 import Debug from 'debug';
 import { NotAuthenticated } from '@ihadeed/errors';
-import { Query, Params } from '@ihadeed/feathers';
+import { BaseQuery, Params } from '@ihadeed/feathers';
 import {
   AuthenticationRequest, AuthenticationBaseStrategy
 } from '@ihadeed/authentication';
@@ -22,6 +22,7 @@ export class LocalStrategy extends AuthenticationBaseStrategy {
 
   get configuration () {
     const authConfig = this.authentication.configuration;
+    // @ts-ignore
     const config = super.configuration || {};
 
     return {
@@ -36,7 +37,7 @@ export class LocalStrategy extends AuthenticationBaseStrategy {
     };
   }
 
-  async getEntityQuery (query: Query, _params: Params) {
+  async getEntityQuery (query: BaseQuery<any>, _params: Params<any>) {
     return {
       $limit: 1,
       ...query

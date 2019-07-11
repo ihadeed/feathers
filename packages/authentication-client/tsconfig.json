@@ -4,6 +4,10 @@
     "src/**/*.ts"
   ],
   "compilerOptions": {
-    "outDir": "lib"    
+    "target": "es5",
+    "outDir": "lib",
+    "lib": [
+      "dom"
+    ]
   }
 }

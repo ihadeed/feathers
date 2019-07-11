@@ -95,7 +95,7 @@ export class OAuthStrategy extends AuthenticationBaseStrategy {
 
     debug('findEntity with query', query);
 
-    const result = await this.entityService.find({
+    const result: any = await this.entityService.find({
       ...params,
       query
     });

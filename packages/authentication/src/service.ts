@@ -1,20 +1,20 @@
-import Debug from 'debug';
-import { merge, get } from 'lodash';
 import { NotAuthenticated } from '@ihadeed/errors';
-import { AuthenticationBase, AuthenticationResult, AuthenticationRequest } from './core';
-import { connection, events } from './hooks';
 import { Params, ServiceMethods } from '@ihadeed/feathers';
+import Debug from 'debug';
+import { get, merge } from 'lodash';
+import { AuthenticationBase, AuthenticationRequest, AuthenticationResult } from './core';
+import { connection, events } from './hooks';
 
 const debug = Debug('@ihadeed/authentication/service');
 
-export class AuthenticationService extends AuthenticationBase implements Partial<ServiceMethods<AuthenticationResult>> {
+export class AuthenticationService<Entity extends string = never, EntityType = any> extends AuthenticationBase implements Partial<ServiceMethods<AuthenticationResult<Entity, EntityType>>> {
   /**
    * Return the payload for a JWT based on the authentication result.
    * Called internally by the `create` method.
    * @param _authResult The current authentication result
    * @param params The service call parameters
    */
-  async getPayload (_authResult: AuthenticationResult, params: Params) {
+  async getPayload(_authResult: AuthenticationResult, params: Params<any>) {
     // Uses `params.payload` or returns an empty payload
     const { payload = {} } = params;
 
@@ -27,7 +27,7 @@ export class AuthenticationService extends AuthenticationBase implements Partial
    * @param authResult The authentication result
    * @param params Service call parameters
    */
-  async getTokenOptions (authResult: AuthenticationResult, params: Params) {
+  async getTokenOptions(authResult: AuthenticationResult, params: Params<any>) {
     const { service, entity, entityId } = this.configuration;
     const jwtOptions = merge({}, params.jwtOptions, params.jwt);
     const hasEntity = service && entity && authResult[entity];
@@ -35,7 +35,7 @@ export class AuthenticationService extends AuthenticationBase implements Partial
     // Set the subject to the entity id if it is available
     if (hasEntity && !jwtOptions.subject) {
       const idProperty = entityId || this.app.service(service).id;
-      const subject = get(authResult, [ entity, idProperty ]);
+      const subject = get(authResult, [entity, idProperty]);
 
       if (subject === undefined) {
         throw new NotAuthenticated(`Can not set subject from ${entity}.${idProperty}`);
@@ -53,7 +53,7 @@ export class AuthenticationService extends AuthenticationBase implements Partial
    * @param data The authentication request (should include `strategy` key)
    * @param params Service call parameters
    */
-  async create (data: AuthenticationRequest, params: Params) {
+  async create(data: AuthenticationRequest, params: Params<any>): Promise<any> {
     const authStrategies = params.authStrategies || this.configuration.authStrategies;
 
     if (!authStrategies.length) {
@@ -64,9 +64,9 @@ export class AuthenticationService extends AuthenticationBase implements Partial
 
     debug('Got authentication result', authResult);
 
-    const [ payload, jwtOptions ] = await Promise.all([
+    const [payload, jwtOptions] = await Promise.all([
       this.getPayload(authResult, params),
-      this.getTokenOptions(authResult, params)
+      this.getTokenOptions(authResult, params),
     ]);
 
     if (authResult.accessToken) {
@@ -86,7 +86,7 @@ export class AuthenticationService extends AuthenticationBase implements Partial
    * @param id The JWT to remove or null
    * @param params Service call parameters
    */
-  async remove (id: null|string, params: Params) {
+  async remove(id: null | string, params: Params<any>): Promise<AuthenticationResult<Entity, EntityType>> {
     const { authentication } = params;
     const { authStrategies } = this.configuration;
 
@@ -97,13 +97,14 @@ export class AuthenticationService extends AuthenticationBase implements Partial
 
     debug('Verifying authentication strategy in remove');
 
+    // @ts-ignore
     return this.authenticate(authentication, params, ...authStrategies);
   }
 
   /**
    * Validates the service configuration.
    */
-  setup () {
+  setup() {
     // The setup method checks for valid settings and registers the
     // connection and event (login, logout) hooks
     const { secret, service, entity, entityId } = this.configuration;
@@ -127,6 +128,6 @@ export class AuthenticationService extends AuthenticationBase implements Partial
     }
 
     // @ts-ignore
-    this.hooks({ after: [ connection(), events() ] });
+    this.hooks({ after: [connection(), events()] });
   }
 }
