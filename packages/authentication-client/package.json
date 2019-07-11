@@ -48,8 +48,6 @@
     "@ihadeed/authentication-local": "^4.0.0-pre.6",
     "@ihadeed/express": "^4.0.0-pre.6",
     "@ihadeed/feathers": "^4.0.0-pre.6",
-    "@ihadeed/primus": "^4.0.0-pre.6",
-    "@ihadeed/primus-client": "^4.0.0-pre.6",
     "@ihadeed/rest-client": "^4.0.0-pre.6",
     "@ihadeed/socketio": "^4.0.0-pre.6",
     "@ihadeed/socketio-client": "^4.0.0-pre.6",

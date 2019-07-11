@@ -46,7 +46,6 @@
     "@ihadeed/commons": "^4.0.0-pre.6",
     "@ihadeed/express": "^4.0.0-pre.6",
     "@ihadeed/feathers": "^4.0.0-pre.6",
-    "@ihadeed/tests": "^4.0.0-pre.6",
     "feathers-memory": "^4.0.0",
     "lodash": "^4.17.13",
     "mocha": "^6.1.4",
