@@ -1,7 +1,7 @@
 const feathers = require('@ihadeed/feathers');
 const expressify = require('@ihadeed/express');
 const bodyParser = require('body-parser');
-const { Service } = require('feathers-memory');
+const { Service } = require('@ihadeed/memory');
 const errors = require('@ihadeed/errors');
 const rest = require('@ihadeed/express/rest');
 

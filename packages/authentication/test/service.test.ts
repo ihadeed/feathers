@@ -3,7 +3,7 @@ import { omit } from 'lodash';
 import jwt from 'jsonwebtoken';
 import feathers, { Application, Service } from '@ihadeed/feathers';
 // @ts-ignore
-import memory from 'feathers-memory';
+import memory from '@ihadeed/memory';
 
 import defaultOptions from '../src/options';
 import { AuthenticationService } from '../src/service';

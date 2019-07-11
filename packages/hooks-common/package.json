@@ -1,0 +1,54 @@
+{
+  "name": "@ihadeed/hooks-common",
+  "version": "4.20.7",
+  "description": "Useful hooks for use with Feathersjs services.",
+  "main": "lib/",
+  "types": "types/",
+  "directories": {
+    "lib": "lib"
+  },
+  "semistandard": {
+    "env": [
+      "mocha"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feathersjs/feathers-hooks-common.git"
+  },
+  "keywords": [
+    "feathers",
+    "feathersjs",
+    "hook",
+    "hooks",
+    "service",
+    "filters",
+    "permission"
+  ],
+  "author": {
+    "name": "John J. Szwaronek",
+    "email": "johnsz9999@gmail.com",
+    "url": "https://feathers-plus.github.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/feathersjs/feathers-hooks-common/issues"
+  },
+  "homepage": "https://github.com/feathersjs/feathers-hooks-common#readme",
+  "dependencies": {
+    "@feathers-plus/batch-loader": "^0.3.0",
+    "@ihadeed/commons": "^1.4.0",
+    "@ihadeed/errors": "^3.3.0",
+    "@ihadeed/feathers": "^3.1.3",
+    "@types/graphql": "^14.0.4",
+    "ajv": "^5.5.2",
+    "debug": "^3.1.0",
+    "graphql": "^14.0.2",
+    "libphonenumber-js": "^1.6.8",
+    "process": "0.11.10",
+    "traverse": "^0.6.6"
+  },
+  "engines": {
+    "node": ">= 6"
+  }
+}

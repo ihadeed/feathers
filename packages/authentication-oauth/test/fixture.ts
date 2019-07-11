@@ -4,7 +4,7 @@ import { AuthenticationService, JWTStrategy, AuthenticationRequest } from '@ihad
 import { express as oauth, OAuthStrategy } from '../src';
 
 // @ts-ignore
-import memory from 'feathers-memory';
+import memory from '@ihadeed/memory';
 
 export class TestOAuthStrategy extends OAuthStrategy {
   async getProfile (data: AuthenticationRequest, _params: Params) {

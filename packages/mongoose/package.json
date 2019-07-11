@@ -1,0 +1,75 @@
+{
+  "name": "@ihadeed/mongoose",
+  "description": "A Feathers service adapter for the Mongoose ORM",
+  "version": "8.0.0",
+  "homepage": "https://github.com/feathersjs-ecosystem/feathers-mongoose",
+  "main": "lib/",
+  "keywords": [
+    "feathers",
+    "feathers-plugin",
+    "REST",
+    "Socket.io",
+    "realtime",
+    "mongodb",
+    "mongo",
+    "mongoose",
+    "service"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/feathersjs-ecosystem/feathers-mongoose.git"
+  },
+  "author": {
+    "name": "Feathers contributors",
+    "email": "hello@feathersjs.com",
+    "url": "https://feathersjs.com"
+  },
+  "contributors": [
+    "Eric Kryski <e.kryski@gmail.com> (http://erickryski.com)",
+    "Glavin Wiechert <glavin.wiechert@gmail.com> (https://github.com/Glavin001)",
+    "Marshall Thompson <marshall@creativeideal.net> (https://github.com/marshallswain)"
+  ],
+  "bugs": {
+    "url": "https://github.com/feathersjs-ecosystem/feathers-mongoose/issues"
+  },
+  "engines": {
+    "node": ">= 6"
+  },
+  "scripts": {
+    "publish": "git push origin --tags && npm run changelog && git push origin",
+    "changelog": "github_changelog_generator && git add CHANGELOG.md && git commit -am \"Updating changelog\"",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "mongodb": "run-rs -v 4.0.0",
+    "lint": "semistandard --fix"
+  },
+  "semistandard": {
+    "env": [
+      "mocha"
+    ]
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "peerDependencies": {
+    "mongoose": "latest"
+  },
+  "dependencies": {
+    "@ihadeed/adapter-commons": "^4.0.0-pre.4",
+    "@ihadeed/commons": "^4.0.0",
+    "@ihadeed/errors": "^4.0.0-pre.4"
+  },
+  "devDependencies": {
+    "@ihadeed/express": "^4.0.0-pre.4",
+    "@ihadeed/feathers": "^4.0.0-pre.4",
+    "@ihadeed/socketio": "^4.0.0-pre.4",
+    "@types/mongoose": "^5.5.7",
+    "mongoose": "latest",
+    "run-rs": "^0.5.2",
+    "semistandard": "^13.0.1",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0"
+  }
+}

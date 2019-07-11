@@ -1,6 +1,6 @@
 const feathers = require('@ihadeed/feathers');
 const socketio = require('@ihadeed/socketio');
-const { Service } = require('feathers-memory');
+const { Service } = require('@ihadeed/memory');
 
 // eslint-disable-next-line no-extend-native
 Object.defineProperty(Error.prototype, 'toJSON', {

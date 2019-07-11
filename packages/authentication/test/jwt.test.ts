@@ -2,7 +2,7 @@ import assert from 'assert';
 import { merge } from 'lodash';
 import feathers, { Application, Service } from '@ihadeed/feathers';
 // @ts-ignore
-import memory from 'feathers-memory';
+import memory from '@ihadeed/memory';
 
 import { AuthenticationService, JWTStrategy, hooks } from '../src';
 import { AuthenticationResult } from '../src/core';

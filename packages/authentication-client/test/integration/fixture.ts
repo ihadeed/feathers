@@ -1,7 +1,7 @@
 import { authenticate } from '@ihadeed/authentication';
 import { HookContext, Application } from '@ihadeed/feathers';
 // @ts-ignore
-import memory from 'feathers-memory';
+import memory from '@ihadeed/memory';
 import { AuthenticationService, JWTStrategy } from '@ihadeed/authentication';
 import { LocalStrategy, hooks } from '@ihadeed/authentication-local';
 

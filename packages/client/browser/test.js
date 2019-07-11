@@ -1,6 +1,6 @@
 const assert = require('assert');
 const baseTests = require('@ihadeed/tests/lib/client');
-const memory = require('feathers-memory');
+const memory = require('@ihadeed/memory');
 
 const feathers = require('../dist/feathers');
 

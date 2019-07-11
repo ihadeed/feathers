@@ -1,0 +1,39 @@
+{
+  "name": "@ihadeed/auth-hooks",
+  "description": "Feathers authentication hooks",
+  "version": "0.3.1",
+  "homepage": "https://github.com/feathersjs-ecosystem/feathers-authentication-hooks",
+  "main": "lib/",
+  "keywords": [
+    "feathers",
+    "feathers-plugin"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/feathersjs-ecosystem/feathers-authentication-hooks.git"
+  },
+  "author": {
+    "name": "Feathers contributors",
+    "email": "hello@feathersjs.com",
+    "url": "https://feathersjs.com"
+  },
+  "contributors": [],
+  "bugs": {
+    "url": "https://github.com/feathersjs-ecosystem/feathers-authentication-hooks/issues"
+  },
+  "semistandard": {
+    "sourceType": "module",
+    "env": [
+      "mocha"
+    ]
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@ihadeed/errors": "^3.3.0",
+    "debug": "^4.0.0",
+    "lodash": "^4.17.5"
+  }
+}
