@@ -29,7 +29,7 @@
   "scripts": {
     "start": "ts-node test/app",
     "prepublish": "npm run compile",
-    "compile": "shx rm -rf lib/ && tsc",
+    "compile": "rm -rf lib/ && tsc",
     "test": "mocha --opts ../../mocha.ts.opts --recursive test/**.test.ts test/**/*.test.ts"
   },
   "directories": {

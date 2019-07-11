@@ -27,7 +27,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "prepublish": "npm run compile",
-    "compile": "shx rm -rf lib/ && tsc",
+    "compile": "rm -rf lib/ && tsc",
     "test": "mocha --opts ../../mocha.ts.opts --recursive test/**.test.ts test/**/*.test.ts"
   },
   "directories": {

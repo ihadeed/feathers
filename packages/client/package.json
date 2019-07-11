@@ -22,7 +22,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "clean": "../../node_modules/.bin/shx rm -rf dist/ && ../../node_modules/.bin/shx mkdir -p dist",
+    "clean": "rm -rf dist/ && mkdir -p dist",
     "version": "npm run build",
     "mocha": "mocha --opts ../../mocha.opts",
     "test": "npm run build && npm run mocha && npm run test:browser",
