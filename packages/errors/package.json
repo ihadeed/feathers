@@ -1,5 +1,5 @@
 {
-	"name": "@feathersjs/errors",
+	"name": "@ihadeed/errors",
 	"description": "Common error types for Feathers apps",
 	"version": "4.0.0-pre.5",
 	"homepage": "https://feathersjs.com",
@@ -39,7 +39,7 @@
 		"debug": "^4.1.1"
 	},
 	"devDependencies": {
-		"@feathersjs/feathers": "^4.0.0-pre.5",
+		"@ihadeed/feathers": "^4.0.0-pre.5",
 		"chai": "^4.2.0",
 		"express": "^4.17.1",
 		"mocha": "^6.1.4",

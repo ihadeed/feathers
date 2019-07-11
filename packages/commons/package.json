@@ -1,5 +1,5 @@
 {
-  "name": "@feathersjs/commons",
+  "name": "@ihadeed/commons",
   "version": "4.0.0-pre.5",
   "description": "Shared Feathers utility functions",
   "homepage": "https://feathersjs.com",
@@ -23,13 +23,8 @@
   "engines": {
     "node": ">= 6"
   },
-<<<<<<< HEAD
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-=======
-  "main": "lib/",
-  "types": "lib/",
->>>>>>> 2efa6468f9b93810b4cbc35e6ec0815dc1cb654f
   "scripts": {
     "prepublish": "npm run compile",
     "compile": "shx rm -rf lib/ && tsc",

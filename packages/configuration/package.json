@@ -1,14 +1,10 @@
 {
-  "name": "@feathersjs/configuration",
+  "name": "@ihadeed/configuration",
   "description": "A small configuration module for your Feathers application.",
   "version": "4.0.0-pre.5",
   "homepage": "https://feathersjs.com",
   "main": "lib/",
-<<<<<<< HEAD
   "types": "lib/index.d.ts",
-=======
-  "types": "lib/",
->>>>>>> 2efa6468f9b93810b4cbc35e6ec0815dc1cb654f
   "keywords": [
     "feathers",
     "feathers-plugin"
@@ -52,7 +48,7 @@
     "debug": "^4.1.1"
   },
   "devDependencies": {
-    "@feathersjs/feathers": "^4.0.0-pre.5",
+    "@ihadeed/feathers": "^4.0.0-pre.5",
     "@types/config": "^0.0.34",
     "@types/debug": "^4.1.4",
     "@types/mocha": "^5.2.7",

@@ -1,14 +1,10 @@
 {
-  "name": "@feathersjs/authentication-local",
+  "name": "@ihadeed/authentication-local",
   "description": "Local authentication strategy for @feathers/authentication",
   "version": "4.0.0-pre.5",
   "homepage": "https://feathersjs.com",
   "main": "lib/",
-<<<<<<< HEAD
   "types": "lib/index.d.ts",
-=======
-  "types": "lib/",
->>>>>>> 2efa6468f9b93810b4cbc35e6ec0815dc1cb654f
   "keywords": [
     "feathers",
     "feathers-plugin"
@@ -43,14 +39,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@feathersjs/errors": "^4.0.0-pre.5",
+    "@ihadeed/errors": "^4.0.0-pre.5",
     "bcryptjs": "^2.4.3",
     "debug": "^4.1.1",
     "lodash": "^4.17.13"
   },
   "devDependencies": {
-    "@feathersjs/authentication": "^4.0.0-pre.5",
-    "@feathersjs/feathers": "^4.0.0-pre.5",
+    "@ihadeed/authentication": "^4.0.0-pre.5",
+    "@ihadeed/feathers": "^4.0.0-pre.5",
     "@types/bcryptjs": "^2.4.2",
     "@types/debug": "^4.1.4",
     "@types/lodash": "^4.14.136",
