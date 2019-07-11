@@ -1,6 +1,6 @@
 {
   "name": "@ihadeed/adapter-commons",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Shared database adapter utility functions",
   "homepage": "https://feathersjs.com",
   "keywords": [
@@ -38,8 +38,8 @@
   },
   "dependencies": {
     "@ihadeed/commons": "^5.0.0",
-    "@ihadeed/errors": "^5.0.0",
-    "@ihadeed/feathers": "^5.0.0"
+    "@ihadeed/errors": "^5.0.1",
+    "@ihadeed/feathers": "^5.0.1"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
