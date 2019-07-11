@@ -36,7 +36,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/transport-commons": "^4.2.1",
+    "@ihadeed/transport-commons": "^4.0.0-pre.6",
     "@types/socket.io": "^2.1.2",
     "debug": "^4.1.1",
     "socket.io": "^2.2.0",

@@ -4,15 +4,6 @@
     "packages/*"
   ],
   "version": "4.0.0-pre.5",
-  "command": {
-    "bootstrap": {
-      "hoist": true
-    },
-    "publish": {
-      "allowBranch": "master",
-      "conventionalCommits": true
-    }
-  },
   "ignoreChanges": [
     "**/changelog.md",
     "**/CHANGELOG.md",
