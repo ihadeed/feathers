@@ -36,17 +36,17 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/commons": "latest",
-    "@ihadeed/errors": "latest",
+    "@ihadeed/commons": "^5.2.1",
+    "@ihadeed/errors": "^5.2.1",
     "@types/express": "^4.17.0",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "uberproto": "^2.0.4"
   },
   "devDependencies": {
-    "@ihadeed/authentication": "latest",
-    "@ihadeed/authentication-local": "latest",
-    "@ihadeed/feathers": "latest",
+    "@ihadeed/authentication": "^5.2.1",
+    "@ihadeed/authentication-local": "^5.2.1",
+    "@ihadeed/feathers": "^5.2.1",
     "axios": "^0.19.0",
     "chai": "^4.2.0",
     "lodash": "^4.17.13",

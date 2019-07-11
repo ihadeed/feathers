@@ -36,16 +36,16 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/transport-commons": "latest",
+    "@ihadeed/transport-commons": "^5.2.1",
     "@types/socket.io": "^2.1.2",
     "debug": "^4.1.1",
     "socket.io": "^2.2.0",
     "uberproto": "^2.0.4"
   },
   "devDependencies": {
-    "@ihadeed/commons": "latest",
-    "@ihadeed/express": "latest",
-    "@ihadeed/feathers": "latest",
+    "@ihadeed/commons": "^5.2.1",
+    "@ihadeed/express": "^5.2.1",
+    "@ihadeed/feathers": "^5.2.1",
     "feathers-memory": "^4.0.0",
     "lodash": "^4.17.13",
     "mocha": "^6.1.4",

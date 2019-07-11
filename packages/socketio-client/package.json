@@ -36,13 +36,13 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/transport-commons": "latest",
+    "@ihadeed/transport-commons": "^5.2.1",
     "@types/socket.io-client": "^1.4.32"
   },
   "devDependencies": {
-    "@ihadeed/commons": "latest",
-    "@ihadeed/feathers": "latest",
-    "@ihadeed/socketio": "latest",
+    "@ihadeed/commons": "^5.2.1",
+    "@ihadeed/feathers": "^5.2.1",
+    "@ihadeed/socketio": "^5.2.1",
     "chai": "^4.2.0",
     "feathers-memory": "^4.0.0",
     "mocha": "^6.1.4",

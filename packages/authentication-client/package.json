@@ -39,18 +39,18 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/commons": "latest",
-    "@ihadeed/errors": "latest",
+    "@ihadeed/commons": "^5.2.1",
+    "@ihadeed/errors": "^5.2.1",
     "debug": "^4.1.1"
   },
   "devDependencies": {
-    "@ihadeed/authentication": "latest",
-    "@ihadeed/authentication-local": "latest",
-    "@ihadeed/express": "latest",
-    "@ihadeed/feathers": "latest",
-    "@ihadeed/rest-client": "latest",
-    "@ihadeed/socketio": "latest",
-    "@ihadeed/socketio-client": "latest",
+    "@ihadeed/authentication": "^5.2.1",
+    "@ihadeed/authentication-local": "^5.2.1",
+    "@ihadeed/express": "^5.2.1",
+    "@ihadeed/feathers": "^5.2.1",
+    "@ihadeed/rest-client": "^5.2.1",
+    "@ihadeed/socketio": "^5.2.1",
+    "@ihadeed/socketio-client": "^5.2.1",
     "@types/debug": "^4.1.4",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.6.2",

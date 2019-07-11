@@ -39,14 +39,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/commons": "latest",
-    "@ihadeed/errors": "latest",
+    "@ihadeed/commons": "^5.2.1",
+    "@ihadeed/errors": "^5.2.1",
     "debug": "^4.1.1",
     "lodash": "^4.17.13",
     "radix-router": "^3.0.1"
   },
   "devDependencies": {
-    "@ihadeed/feathers": "latest",
+    "@ihadeed/feathers": "^5.2.1",
     "@types/debug": "^4.1.4",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.6.2",

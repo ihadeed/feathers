@@ -37,9 +37,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/commons": "latest",
-    "@ihadeed/errors": "latest",
-    "@ihadeed/feathers": "latest"
+    "@ihadeed/commons": "^5.2.1",
+    "@ihadeed/errors": "^5.2.1",
+    "@ihadeed/feathers": "^5.2.1"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",

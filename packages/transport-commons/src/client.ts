@@ -1,6 +1,7 @@
 import { convert, Timeout } from '@ihadeed/errors';
 import { BaseQuery, FindOneParams, FindOneQuery, Paginated, Params } from '@ihadeed/feathers';
 import Debug from 'debug';
+import { Query } from '../../feathers';
 
 const debug = Debug('@ihadeed/transport-commons/client');
 
@@ -78,7 +79,7 @@ export class Service<T = any> {
   }
 
   send(method: 'find', query?: FindOneQuery<T>): Promise<T>
-  send(method: 'find', query?: BaseQuery<T>): Promise<T[] | Paginated<T[]>>
+  send(method: 'find', query?: Query<T>): Promise<T[] | Paginated<T[]>>
   send(method: 'get' | 'update' | 'patch' | 'remove', ...args: any[]): Promise<T>
   send(method: 'create', data: Partial<T> | T, params?: Params<T>): Promise<T>
   send(method: 'create', data: Partial<T[]> | T, params?: Params<T>): Promise<T[]>

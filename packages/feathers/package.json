@@ -39,7 +39,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/commons": "latest",
+    "@ihadeed/commons": "^5.2.1",
     "debug": "^4.1.1",
     "events": "^3.0.0",
     "uberproto": "^2.0.4"

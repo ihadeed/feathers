@@ -48,14 +48,14 @@
     "mongoose": "latest"
   },
   "dependencies": {
-    "@ihadeed/adapter-commons": "latest",
-    "@ihadeed/commons": "latest",
-    "@ihadeed/errors": "latest"
+    "@ihadeed/adapter-commons": "^5.2.1",
+    "@ihadeed/commons": "^5.2.1",
+    "@ihadeed/errors": "^5.2.1"
   },
   "devDependencies": {
-    "@ihadeed/express": "latest",
-    "@ihadeed/feathers": "latest",
-    "@ihadeed/socketio": "latest",
+    "@ihadeed/express": "^5.2.1",
+    "@ihadeed/feathers": "^5.2.1",
+    "@ihadeed/socketio": "^5.2.1",
     "@types/mongoose": "^5.5.7",
     "mongoose": "latest",
     "run-rs": "^0.5.2",

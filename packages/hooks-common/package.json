@@ -37,9 +37,9 @@
   "homepage": "https://github.com/feathersjs/feathers-hooks-common#readme",
   "dependencies": {
     "@feathers-plus/batch-loader": "^0.3.0",
-    "@ihadeed/commons": "latest",
-    "@ihadeed/errors": "latest",
-    "@ihadeed/feathers": "latest",
+    "@ihadeed/commons": "^5.2.1",
+    "@ihadeed/errors": "^5.2.1",
+    "@ihadeed/feathers": "^5.2.1",
     "@types/graphql": "^14.0.4",
     "ajv": "^5.5.2",
     "debug": "^3.1.0",

@@ -39,14 +39,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/errors": "latest",
+    "@ihadeed/errors": "^5.2.1",
     "bcryptjs": "^2.4.3",
     "debug": "^4.1.1",
     "lodash": "^4.17.13"
   },
   "devDependencies": {
-    "@ihadeed/authentication": "latest",
-    "@ihadeed/feathers": "latest",
+    "@ihadeed/authentication": "^5.2.1",
+    "@ihadeed/feathers": "^5.2.1",
     "@types/bcryptjs": "^2.4.2",
     "@types/debug": "^4.1.4",
     "@types/lodash": "^4.14.136",

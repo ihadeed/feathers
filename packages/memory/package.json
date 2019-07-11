@@ -47,17 +47,17 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@ihadeed/adapter-commons": "latest",
-    "@ihadeed/commons": "latest",
-    "@ihadeed/errors": "latest",
+    "@ihadeed/adapter-commons": "^5.2.1",
+    "@ihadeed/commons": "^5.2.1",
+    "@ihadeed/errors": "^5.2.1",
     "sift": "^8.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
-    "@ihadeed/express": "latest",
-    "@ihadeed/feathers": "latest",
-    "@ihadeed/socketio": "latest",
+    "@ihadeed/express": "^5.2.1",
+    "@ihadeed/feathers": "^5.2.1",
+    "@ihadeed/socketio": "^5.2.1",
     "@types/node": "^12.0.12",
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",

@@ -17,6 +17,7 @@ interface Feathers {
 }
 
 declare namespace createApplication {
+  import Base = Mocha.reporters.Base;
   type Id = number | string;
   type NullableId = Id | null;
 
@@ -53,8 +54,10 @@ declare namespace createApplication {
     $or?: QueryOrBlock<T>[];
   }
 
+  type Query<T> = BaseQuery<T> & QueryOrBlock<T>;
+
   interface Params<T = any> {
-    query?: BaseQuery<T>;
+    query?: Query<T>;
     paginate?: boolean | number;
 
     [key: string]: any; // (JL) not sure if we want this
@@ -67,7 +70,7 @@ declare namespace createApplication {
     data: T[];
   }
 
-  type FindOneQuery<T> = BaseQuery<T> & { $limit: 1 };
+  type FindOneQuery<T> = Query<T> & { $limit: 1 };
 
   interface FindOneParams<T> extends Params<T> {
     query: FindOneQuery<T>;
