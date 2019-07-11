@@ -68,5 +68,5 @@
     "webpack-cli": "^3.3.5",
     "webpack-merge": "^4.2.1"
   },
-  "gitHead": "619a04fe46b5f4f9d3aaa31eeb3a35d790ab79ce"
+  "gitHead": "38b599e1fb3ed40cf1596369270153285f507aae"
 }
