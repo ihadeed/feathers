@@ -2,6 +2,7 @@
 
 import { EventEmitter } from 'events';
 import * as http from 'http';
+import { ModelPopulateOptions } from 'mongoose';
 
 declare const createApplication: Feathers;
 export = createApplication;
@@ -17,7 +18,7 @@ interface Feathers {
 }
 
 declare namespace createApplication {
-  import Base = Mocha.reporters.Base;
+
   type Id = number | string;
   type NullableId = Id | null;
 
@@ -46,12 +47,15 @@ declare namespace createApplication {
     [K in KeyOf<T>]?: T[K] | QueryOpts<T, K>;
   };
 
+  type MongoosePopulateParams = string | ModelPopulateOptions | ModelPopulateOptions[];
+
   interface BaseQuery<T> {
     $limit?: number;
     $skip?: number;
     $sort?: QuerySortOpts<T>;
     $select?: KeyOf<T>[];
     $or?: QueryOrBlock<T>[];
+    $populate?: MongoosePopulateParams;
   }
 
   type Query<T> = BaseQuery<T> & QueryOrBlock<T>;
@@ -153,6 +157,7 @@ declare namespace createApplication {
      * The real-time connection object
      */
     connection?: any;
+    enableTransaction?: boolean;
   }
 
   interface HookMap {
@@ -176,14 +181,19 @@ declare namespace createApplication {
     [key: string]: any;
 
     find(params?: FindOneParams<T>): Promise<T>;
+
     find(params?: PaginationParams<T>): Promise<Paginated<T>>;
+
     find(params?: Params<T>): Promise<T[]>;
+
     find(params?: Params<T>);
 
     get(id: Id, params?: Params<T>): Promise<T>;
 
     create(data: Partial<T>, params?: Params<T>): Promise<T>;
+
     create(data: Partial<T>[], params?: Params<T>): Promise<T[]>;
+
     create(data: Partial<T> | Array<Partial<T>>, params?: Params<T>);
 
     update(id: NullableId, data: T, params?: Params<T>): Promise<T>;

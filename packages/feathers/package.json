@@ -45,6 +45,7 @@
     "uberproto": "^2.0.4"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.5.8",
     "mocha": "^6.1.4",
     "typescript": "^3.5.3"
   },

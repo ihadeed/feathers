@@ -1,11 +1,9 @@
-const errors = require('@ihadeed/errors');
-const ERROR = Symbol('@ihadeed/mongoose/error');
+import errors from '@ihadeed/errors';
+export const ERROR = Symbol('@ihadeed/mongoose/error');
 
-const wrap = (error, original) => Object.assign(error, { [ERROR]: original });
+const wrap = (error: Error & any, original: Error & any) => Object.assign(error, { [ERROR]: original });
 
-exports.ERROR = ERROR;
-
-exports.errorHandler = (error) => {
+export async function errorHandler(error: Error & any) {
   if (error.code === 11000 || error.code === 11001) {
     // NOTE (EK): Error parsing as discussed in this github thread
     // https://github.com/Automattic/mongoose/issues/2129
@@ -23,10 +21,10 @@ exports.errorHandler = (error) => {
 
     error.message = `${key}: ${value} already exists.`;
     error.errors = {
-      [key]: value
+      [key]: value,
     };
 
-    return Promise.reject(wrap(new errors.Conflict(error), error));
+    return wrap(new errors.Conflict(error), error);
   }
 
   if (error.name) {
@@ -35,16 +33,16 @@ exports.errorHandler = (error) => {
       case 'ValidatorError':
       case 'CastError':
       case 'VersionError':
-        return Promise.reject(wrap(new errors.BadRequest(error), error));
+        return wrap(new errors.BadRequest(error), error);
       case 'OverwriteModelError':
-        return Promise.reject(wrap(new errors.Conflict(error), error));
+        return wrap(new errors.Conflict(error), error);
       case 'MissingSchemaError':
       case 'DivergentArrayError':
-        return Promise.reject(wrap(new errors.GeneralError(error), error));
+        return wrap(new errors.GeneralError(error), error);
       case 'MongoError':
-        return Promise.reject(wrap(new errors.GeneralError(error), error));
+        return wrap(new errors.GeneralError(error), error);
     }
   }
 
-  return Promise.reject(error);
-};
+  return error;
+}

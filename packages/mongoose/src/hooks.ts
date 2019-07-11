@@ -1,8 +1,10 @@
-exports.toObject = function (options = {}, dataField = 'data') {
-  return function (hook) {
+import { HookContext } from '@ihadeed/feathers';
+
+export const toObject = (options = {}, dataField = 'data') => {
+  return (ctx: HookContext) => {
     // Only perform this if it's used as an after hook.
-    if (hook.result) {
-      let data = hook.result[dataField] || hook.result;
+    if (ctx.result) {
+      let data = ctx.result[dataField] || ctx.result;
       let res;
 
       // Handle multiple mongoose models
@@ -19,10 +21,10 @@ exports.toObject = function (options = {}, dataField = 'data') {
       }
       // If our data is transformed set it to appropriate location on the hook
       if (res) {
-        if (hook.result[dataField]) {
-          hook.result[dataField] = res;
+        if (ctx.result[dataField]) {
+          ctx.result[dataField] = res;
         } else {
-          hook.result = res;
+          ctx.result = res;
         }
       }
     }

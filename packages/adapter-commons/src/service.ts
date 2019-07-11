@@ -26,9 +26,19 @@ export interface ServiceOptions {
 }
 
 export interface InternalServiceMethods<T = any> {
+  _find(params?: FindOneParams<T>): Promise<T>;
+
+  _find(params?: PaginationParams<T>): Promise<Paginated<T>>;
+
+  _find(params?: Params<T>): Promise<T[]>;
+
   _find(params?: Params<T>): Promise<T> | Promise<T[]> | Promise<Paginated<T>>;
 
   _get(id: Id, params?: Params<T>): Promise<T>;
+
+  _create(data: Partial<T>, params?: Params<T>): Promise<T>;
+
+  _create(data: Partial<T>[], params?: Params<T>): Promise<T[]>;
 
   _create(data: Partial<T> | Array<Partial<T>>, params?: Params<T>): Promise<T | T[]>;
 
@@ -61,18 +71,25 @@ export class AdapterService<T = any> implements ServiceMethods<T> {
     return this.options.events;
   }
 
-  filterQuery(params: Params<T> = {}, opts: any = {}) {
-    const paginate = typeof params.paginate !== 'undefined'
-      ? params.paginate : this.options.paginate;
-    const { query = {} } = params;
-    const options = Object.assign({
+  filterQuery(params?: Params<T>, opts?: any) {
+    params = params || {};
+    opts = opts || {};
+    params.query = params.query || {};
+
+    const paginate = typeof params.paginate !== 'undefined' ? params.paginate : this.options.paginate;
+    const options = {
       operators: this.options.whitelist || [],
       filters: this.options.filters,
       paginate,
-    }, opts);
-    const result = filterQuery(query, options);
+      ...opts,
+    };
 
-    return Object.assign(result, { paginate });
+    const result = filterQuery(params.query, options);
+
+    return {
+      ...result,
+      paginate,
+    };
   }
 
   allowsMulti(method: string) {
