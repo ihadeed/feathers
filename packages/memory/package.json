@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/memory",
   "description": "An in memory service store",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "homepage": "https://github.com/feathersjs-ecosystem/feathers-memory",
   "main": "lib/index",
   "types": "types",
@@ -47,17 +47,17 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@ihadeed/adapter-commons": "^5.4.0",
-    "@ihadeed/commons": "^5.4.0",
-    "@ihadeed/errors": "^5.4.0",
+    "@ihadeed/adapter-commons": "^5.5.0",
+    "@ihadeed/commons": "^5.5.0",
+    "@ihadeed/errors": "^5.5.0",
     "sift": "^8.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
-    "@ihadeed/express": "^5.4.0",
-    "@ihadeed/feathers": "^5.4.0",
-    "@ihadeed/socketio": "^5.4.0",
+    "@ihadeed/express": "^5.5.0",
+    "@ihadeed/feathers": "^5.5.0",
+    "@ihadeed/socketio": "^5.5.0",
     "@types/node": "^12.0.12",
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
