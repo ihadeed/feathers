@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/transport-commons",
   "description": "Shared functionality for websocket providers",
-  "version": "5.0.1",
+  "version": "5.2.1",
   "homepage": "https://feathersjs.com",
   "main": "lib/",
   "types": "lib/",

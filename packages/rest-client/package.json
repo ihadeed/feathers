@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/rest-client",
   "description": "REST client services for different Ajax libraries",
-  "version": "5.0.1",
+  "version": "5.2.1",
   "homepage": "https://feathersjs.com",
   "main": "lib/index.js",
   "types": "index.d.ts",

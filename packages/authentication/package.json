@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/authentication",
   "description": "Add Authentication to your FeathersJS app.",
-  "version": "5.0.1",
+  "version": "5.2.1",
   "homepage": "https://feathersjs.com",
   "main": "lib/",
   "types": "lib/index.d.ts",

@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/mongoose",
   "description": "A Feathers service adapter for the Mongoose ORM",
-  "version": "5.1.0",
+  "version": "5.2.1",
   "homepage": "https://github.com/feathersjs-ecosystem/feathers-mongoose",
   "main": "lib/",
   "keywords": [
@@ -35,15 +35,6 @@
   },
   "engines": {
     "node": ">= 6"
-  },
-  "scripts": {
-    "publish": "git push origin --tags && npm run changelog && git push origin",
-    "changelog": "github_changelog_generator && git add CHANGELOG.md && git commit -am \"Updating changelog\"",
-    "release:patch": "npm version patch && npm publish",
-    "release:minor": "npm version minor && npm publish",
-    "release:major": "npm version major && npm publish",
-    "mongodb": "run-rs -v 4.0.0",
-    "lint": "semistandard --fix"
   },
   "semistandard": {
     "env": [

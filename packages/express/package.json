@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/express",
   "description": "Feathers Express framework bindings and REST provider",
-  "version": "5.0.1",
+  "version": "5.2.1",
   "homepage": "https://feathersjs.com",
   "main": "lib/",
   "types": "index.d.ts",

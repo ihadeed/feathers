@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/socketio-client",
   "description": "The client for Socket.io through feathers-socketio",
-  "version": "5.0.1",
+  "version": "5.2.1",
   "homepage": "https://feathersjs.com",
   "main": "lib/index.js",
   "types": "index.d.ts",

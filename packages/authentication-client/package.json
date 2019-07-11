@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/authentication-client",
   "description": "The authentication plugin for feathers-client",
-  "version": "5.0.1",
+  "version": "5.2.1",
   "homepage": "https://feathersjs.com",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
