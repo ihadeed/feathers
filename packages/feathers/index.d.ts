@@ -170,11 +170,16 @@ declare namespace createApplication {
   interface ServiceMethods<T> {
     [key: string]: any;
 
-    find(params?: Params<T>): Promise<T> | Promise<T[]> | Promise<Paginated<T>>;
+    find(params?: FindOneParams<T>): Promise<T>;
+    find(params?: PaginationParams<T>): Promise<Paginated<T>>;
+    find(params?: Params<T>): Promise<T[]>;
+    find(params?: Params<T>);
 
     get(id: Id, params?: Params<T>): Promise<T>;
 
-    create(data: Partial<T> | Array<Partial<T>>, params?: Params<T>): Promise<T> | Promise<T[]>;
+    create(data: Partial<T>, params?: Params<T>): Promise<T>;
+    create(data: Partial<T>[], params?: Params<T>): Promise<T[]>;
+    create(data: Partial<T> | Array<Partial<T>>, params?: Params<T>);
 
     update(id: NullableId, data: T, params?: Params<T>): Promise<T>;
 
