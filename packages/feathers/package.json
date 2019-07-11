@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/feathers",
   "description": "A REST and realtime API layer for modern applications.",
-  "version": "4.0.0-pre.5",
+  "version": "4.0.0-pre.6",
   "homepage": "http://feathersjs.com",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/commons": "^4.0.0-pre.5",
+    "@ihadeed/commons": "^4.0.0-pre.6",
     "debug": "^4.1.1",
     "events": "^3.0.0",
     "uberproto": "^2.0.4"
