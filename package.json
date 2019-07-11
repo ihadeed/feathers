@@ -1,32 +1,8 @@
 {
   "name": "feathers",
   "private": true,
-  "homepage": "http://feathersjs.com",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/feathersjs/feathers.git"
-  },
-  "author": {
-    "name": "Feathers contributor",
-    "email": "hello@feathersjs.com",
-    "url": "https://feathersjs.com"
-  },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/feathersjs/feathers/issues"
-  },
-  "engines": {
-    "node": ">= 8"
-  },
-  "scripts": {
-    "install": "lerna bootstrap",
-    "publish": "lerna publish && git commit -am \"Update version and changelog\" && git push origin master",
-    "lint": "tslint 'packages/**/*.js' 'packages/**/*.ts' -c tslint.json --fix",
-    "test": "npm run lint && nyc lerna run test"
-  },
   "devDependencies": {
-    "lerna": "^3.15.0",
-    "nyc": "^14.1.1",
-    "tslint": "^5.18.0"
+    "lerna": "^3.15.0"
   }
 }
