@@ -47,17 +47,17 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@ihadeed/adapter-commons": "^5.0.1",
-    "@ihadeed/commons": "^5.0.0",
-    "@ihadeed/errors": "^5.0.1",
+    "@ihadeed/adapter-commons": "latest",
+    "@ihadeed/commons": "latest",
+    "@ihadeed/errors": "latest",
     "sift": "^8.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
-    "@ihadeed/express": "^5.0.1",
-    "@ihadeed/feathers": "^5.0.1",
-    "@ihadeed/socketio": "^5.0.1",
+    "@ihadeed/express": "latest",
+    "@ihadeed/feathers": "latest",
+    "@ihadeed/socketio": "latest",
     "@types/node": "^12.0.12",
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
@@ -68,5 +68,6 @@
     "webpack": "^4.28.4",
     "webpack-cli": "^3.3.5",
     "webpack-merge": "^4.2.1"
-  }
+  },
+  "gitHead": "619a04fe46b5f4f9d3aaa31eeb3a35d790ab79ce"
 }

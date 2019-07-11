@@ -39,7 +39,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/commons": "^5.0.0",
+    "@ihadeed/commons": "latest",
     "debug": "^4.1.1",
     "events": "^3.0.0",
     "uberproto": "^2.0.4"
@@ -48,5 +48,5 @@
     "mocha": "^6.1.4",
     "typescript": "^3.5.3"
   },
-  "gitHead": "1de7b81fcae0effc397e548cf9b96d79c2942237"
+  "gitHead": "619a04fe46b5f4f9d3aaa31eeb3a35d790ab79ce"
 }

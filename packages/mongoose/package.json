@@ -57,19 +57,20 @@
     "mongoose": "latest"
   },
   "dependencies": {
-    "@ihadeed/adapter-commons": "^5.0.1",
-    "@ihadeed/commons": "^5.0.0",
-    "@ihadeed/errors": "^5.0.1"
+    "@ihadeed/adapter-commons": "latest",
+    "@ihadeed/commons": "latest",
+    "@ihadeed/errors": "latest"
   },
   "devDependencies": {
-    "@ihadeed/express": "^5.0.1",
-    "@ihadeed/feathers": "^5.0.1",
-    "@ihadeed/socketio": "^5.0.1",
+    "@ihadeed/express": "latest",
+    "@ihadeed/feathers": "latest",
+    "@ihadeed/socketio": "latest",
     "@types/mongoose": "^5.5.7",
     "mongoose": "latest",
     "run-rs": "^0.5.2",
     "semistandard": "^13.0.1",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0"
-  }
+  },
+  "gitHead": "619a04fe46b5f4f9d3aaa31eeb3a35d790ab79ce"
 }

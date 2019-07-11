@@ -17,7 +17,7 @@ function createConfig (name, isProduction = false) {
     module: {
       rules: [{
         test: /\.js/,
-        exclude: /node_modules\/(?!(@feathersjs|debug))/,
+        exclude: /node_modules\/(?!(@ihadeed|debug))/,
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-env']

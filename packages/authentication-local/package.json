@@ -39,14 +39,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/errors": "^5.0.1",
+    "@ihadeed/errors": "latest",
     "bcryptjs": "^2.4.3",
     "debug": "^4.1.1",
     "lodash": "^4.17.13"
   },
   "devDependencies": {
-    "@ihadeed/authentication": "^5.0.1",
-    "@ihadeed/feathers": "^5.0.1",
+    "@ihadeed/authentication": "latest",
+    "@ihadeed/feathers": "latest",
     "@types/bcryptjs": "^2.4.2",
     "@types/debug": "^4.1.4",
     "@types/lodash": "^4.14.136",
@@ -57,5 +57,5 @@
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   },
-  "gitHead": "1de7b81fcae0effc397e548cf9b96d79c2942237"
+  "gitHead": "619a04fe46b5f4f9d3aaa31eeb3a35d790ab79ce"
 }

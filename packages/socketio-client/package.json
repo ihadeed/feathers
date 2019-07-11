@@ -36,18 +36,18 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/transport-commons": "^5.0.1",
+    "@ihadeed/transport-commons": "latest",
     "@types/socket.io-client": "^1.4.32"
   },
   "devDependencies": {
-    "@ihadeed/commons": "^5.0.0",
-    "@ihadeed/feathers": "^5.0.1",
-    "@ihadeed/socketio": "^5.0.1",
+    "@ihadeed/commons": "latest",
+    "@ihadeed/feathers": "latest",
+    "@ihadeed/socketio": "latest",
     "chai": "^4.2.0",
     "feathers-memory": "^4.0.0",
     "mocha": "^6.1.4",
     "socket.io-client": "^2.2.0",
     "typescript": "^3.5.3"
   },
-  "gitHead": "1de7b81fcae0effc397e548cf9b96d79c2942237"
+  "gitHead": "619a04fe46b5f4f9d3aaa31eeb3a35d790ab79ce"
 }

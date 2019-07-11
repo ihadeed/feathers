@@ -38,13 +38,13 @@
     "@babel/core": "^7.5.4",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.4",
-    "@ihadeed/authentication-client": "^5.0.1",
-    "@ihadeed/errors": "^5.0.1",
-    "@ihadeed/express": "^5.0.1",
-    "@ihadeed/feathers": "^5.0.1",
-    "@ihadeed/rest-client": "^5.0.1",
-    "@ihadeed/socketio": "^5.0.1",
-    "@ihadeed/socketio-client": "^5.0.1",
+    "@ihadeed/authentication-client": "latest",
+    "@ihadeed/errors": "latest",
+    "@ihadeed/express": "latest",
+    "@ihadeed/feathers": "latest",
+    "@ihadeed/rest-client": "latest",
+    "@ihadeed/socketio": "latest",
+    "@ihadeed/socketio-client": "latest",
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
     "feathers-memory": "^4.0.0",
@@ -64,5 +64,5 @@
     "ws": "^7.1.0",
     "xhr2": "^0.2.0"
   },
-  "gitHead": "1de7b81fcae0effc397e548cf9b96d79c2942237"
+  "gitHead": "619a04fe46b5f4f9d3aaa31eeb3a35d790ab79ce"
 }
