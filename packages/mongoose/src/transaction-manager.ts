@@ -32,6 +32,7 @@ export const beginTransaction = <T = any>(options?: TransactionOptions): Hook =>
         context.params.mongoose = { session };
       }
       context.enableTransaction = true; // true if transaction is enabled
+
       return context;
     } catch (err) {
       throw new Error(`Error while starting session ${err}`);

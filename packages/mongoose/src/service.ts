@@ -1,6 +1,6 @@
-import { AdapterService, select, ServiceOptions } from '@ihadeed/adapter-commons';
+import { AdapterService, InternalServiceMethods, select, ServiceOptions } from '@ihadeed/adapter-commons';
 import errors from '@ihadeed/errors';
-import { MongoosePopulateParams, Paginated, PaginationParams, Params } from '@ihadeed/feathers';
+import { FindOneParams, Id, MongoosePopulateParams, Paginated, PaginationParams, Params } from '@ihadeed/feathers';
 import _ from 'lodash';
 import { UpdateManyOptions } from 'mongodb';
 import mongoose from 'mongoose';
@@ -40,7 +40,7 @@ export type MDoc<T> = mongoose.MongooseDocument & T & mongoose.Document & {
 };
 
 // Create the service.
-export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document> extends AdapterService<T> {
+export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document> extends AdapterService<T> implements InternalServiceMethods<T> {
   discriminatorKey: string;
   discriminators: MongooseServiceDiscriminators<DT> = {};
   options: MongooseServiceOptions<DT>;
@@ -103,9 +103,10 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
     return this._get(id, params);
   }
 
+  async _find(params?: FindOneParams<T>): Promise<T>;
   async _find(params?: Params<T>): Promise<T[]>;
-  async _find(params?: PaginationParams<T>): Promise<Paginated<T[]>>;
-  async _find(params?: Params<T> | PaginationParams<T>): Promise<T[] | Paginated<T[]>> {
+  async _find(params?: PaginationParams<T>): Promise<Paginated<T>>;
+  async _find(params?: Params<T> | PaginationParams<T>): Promise<T | T[] | Paginated<T>> {
     params = params || {};
     params.query = params.query || {};
 
@@ -173,7 +174,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
       const mQueryCount = this.useEstimatedDocumentCount ? mQuery.estimatedDocumentCount() : mQuery.countDocuments();
       try {
         const count = await mQueryCount.session(params.mongoose && params.mongoose.session).exec();
-        return await executeQuery(count) as Paginated<T[]>;
+        return await executeQuery(count) as Paginated<T>;
       } catch (err) {
         throw errorHandler(err);
       }
@@ -186,8 +187,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
       throw errorHandler(err);
     }
   }
-
-  async _get(id: string, params: Params<T> = {}) {
+  async _get(id: Id, params: Params<T> = {}): Promise<T> {
     const { query, filters } = this.filterQuery(params);
     query.$and = [
       ...query.$and || [],
@@ -229,22 +229,28 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
     if (!data) {
       throw new errors.NotFound(`No record found for id '${id}'`);
     }
+
+    return data;
   }
 
   async _create(_data: T, params?: Params<T>): Promise<T>
   async _create(_data: T[], params?: Params<T>): Promise<T[]>
   async _create(_data: T | T[], params: Params<T> = {}): Promise<T | T[]> {
+    console.log('Create got called');
+    params = params || {};
+    params.query = params.query || {};
+
+    const discriminatorKey: string = params.query[this.discriminatorKey] || this.discriminatorKey;
+    const model: mongoose.Model<DT> = this.discriminators[discriminatorKey] || this.Model;
+
+    const $populate: MongoosePopulateParams = params.query.$populate ? params.query.$populate : undefined;
+    const data: T[] = Array.isArray(_data) ? _data : [_data];
+
+    console.log('Done doing stuff');
     try {
-      params = params || {};
-      params.query = params.query || {};
-
-      const discriminatorKey: string = params.query[this.discriminatorKey] || this.discriminatorKey;
-      const model: mongoose.Model<DT> = this.discriminators[discriminatorKey] || this.Model;
-
-      const $populate: MongoosePopulateParams = params.query.$populate ? params.query.$populate : undefined;
-      const data: T[] = Array.isArray(_data) ? _data : [_data];
-
       const r: MDoc<T> | MDoc<T>[] = await model.create(data, params.mongoose);
+
+      console.log('Created! ');
 
       let results: MDoc<T>[] = Array.isArray(r) ? r : [r];
 
@@ -268,6 +274,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
 
       return results[0];
     } catch (err) {
+      console.log('err');
       throw errorHandler(err);
     }
   }
@@ -466,4 +473,6 @@ export function init<T, DT extends mongoose.Document & T = mongoose.Document & T
   return new Service<T, DT>(options);
 }
 
-export default init;
+init.Service = Service;
+init.default = init;
+init.ERROR = ERROR;
