@@ -3,8 +3,7 @@ export const ERROR = Symbol('@ihadeed/mongoose/error');
 
 const wrap = (error: Error & any, original: Error & any) => Object.assign(error, { [ERROR]: original });
 
-export async function errorHandler(error: Error & any) {
-  console.log('Handling err');
+export function errorHandler(error: Error & any) {
   if (error.code === 11000 || error.code === 11001) {
     // NOTE (EK): Error parsing as discussed in this github thread
     // https://github.com/Automattic/mongoose/issues/2129

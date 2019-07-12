@@ -2,20 +2,18 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2018",
-    "sourceMap": true,
-    "declaration": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
     "outDir": "dist",
+    "moduleResolution": "node",
     "baseUrl": ".",
+    "lib": [
+      "es2018"
+    ],
+    "declaration": false,
+    "allowUnreachableCode": false,
     "typeRoots": [
       "node_modules/@types"
-    ]
-  },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "src/**/*.ts"
-  ]
+    ],
+    "sourceMap": true,
+    "esModuleInterop": true
+  }
 }

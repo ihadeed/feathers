@@ -1,6 +1,14 @@
 import { AdapterService, InternalServiceMethods, select, ServiceOptions } from '@ihadeed/adapter-commons';
 import errors from '@ihadeed/errors';
-import { FindOneParams, Id, MongoosePopulateParams, Paginated, PaginationParams, Params } from '@ihadeed/feathers';
+import {
+  FindOneParams,
+  Id,
+  MongoosePopulateParams,
+  NullableId,
+  Paginated,
+  PaginationParams,
+  Params,
+} from '@ihadeed/feathers';
 import _ from 'lodash';
 import { UpdateManyOptions } from 'mongodb';
 import mongoose from 'mongoose';
@@ -187,6 +195,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
       throw errorHandler(err);
     }
   }
+
   async _get(id: Id, params: Params<T> = {}): Promise<T> {
     const { query, filters } = this.filterQuery(params);
     query.$and = [
@@ -236,7 +245,6 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
   async _create(_data: T, params?: Params<T>): Promise<T>
   async _create(_data: T[], params?: Params<T>): Promise<T[]>
   async _create(_data: T | T[], params: Params<T> = {}): Promise<T | T[]> {
-    console.log('Create got called');
     params = params || {};
     params.query = params.query || {};
 
@@ -246,11 +254,8 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
     const $populate: MongoosePopulateParams = params.query.$populate ? params.query.$populate : undefined;
     const data: T[] = Array.isArray(_data) ? _data : [_data];
 
-    console.log('Done doing stuff');
     try {
       const r: MDoc<T> | MDoc<T>[] = await model.create(data, params.mongoose);
-
-      console.log('Created! ');
 
       let results: MDoc<T>[] = Array.isArray(r) ? r : [r];
 
@@ -274,7 +279,6 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
 
       return results[0];
     } catch (err) {
-      console.log('err');
       throw errorHandler(err);
     }
   }
@@ -285,8 +289,8 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
     }
 
     // Handle case where data might be a mongoose document
-    if (data instanceof mongoose.MongooseDocument) {
-      data = data.toObject();
+    if (typeof (data as mongoose.Document).toObject === 'function') {
+      data = (data as mongoose.Document).toObject();
     }
 
     const { query, filters } = this.filterQuery(params);
@@ -334,29 +338,14 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
     return select(params, this.id)(result);
   }
 
-  async _patch(id: string, data: Partial<T>, params: Params<T> = {}) {
+  async _patch(id: Id, data: Partial<T | mongoose.Document>, params?: Params<T>): Promise<T>;
+  async _patch(id: null, data: Partial<T | mongoose.Document>, params?: Params<T>): Promise<T[]>;
+  async _patch(id: NullableId, data: Partial<T | mongoose.Document>, params: Params<T> = {}): Promise<T | T[]> {
     const { query } = this.filterQuery(params);
-    const mapIds = data => data.map(current => current[this.id]);
-
-    // By default we will just query for the one id. For multi patch
-    // we create a list of the ids of all items that will be changed
-    // to re-query them after the update
-    let ids: string[];
-
-    if (id === null) {
-      const docs: T[] = await this._find({
-        ...params,
-        paginate: false,
-      });
-
-      ids = docs.map(doc => doc[this.id] as string);
-    } else {
-      ids = [id];
-    }
 
     // Handle case where data might be a mongoose model
-    if (data instanceof mongoose.MongooseDocument) {
-      data = data.toObject();
+    if (typeof (data as mongoose.Document).toObject === 'function') {
+      data = (data as mongoose.Document).toObject();
     }
 
     // ensure we are working on a copy
@@ -370,14 +359,8 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
       ...params.mongoose,
     };
 
-    if (id !== null) {
-      query.$and = [
-        ...query.$and || [],
-        {
-          [this.id]: id,
-        },
-      ];
-    }
+    const discriminator: string = query[this.discriminatorKey] || this.discriminatorKey;
+    const model: mongoose.Model<DT> = this.discriminators[discriminator] || this.Model;
 
     if (this.id === '_id') {
       // We can not update default mongo ids
@@ -388,11 +371,34 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
       data[this.id] = id;
     }
 
+    if (id !== null) {
+      try {
+        const res = await model.findByIdAndUpdate(id, data, {
+          ...options,
+          new: !options.writeResult,
+        }).lean(this.lean).exec();
+
+        return select(params, this.id)(res);
+      } catch (err) {
+        throw errorHandler(err);
+      }
+    }
+
     // NOTE (EK): We need this shitty hack because update doesn't
     // return a promise properly when runValidators is true. WTF!
     try {
       params.query = params.query || {};
       const $populate = params.query.$populate ? params.query.$populate : undefined;
+
+      // By default we will just query for the one id. For multi patch
+      // we create a list of the ids of all items that will be changed
+      // to re-query them after the update
+      const docs: T[] = await this._find({
+        ...params,
+        paginate: false,
+      });
+
+      const ids: string[] = docs.map(doc => doc[this.id] as string);
 
       // Create a new query that re-queries all ids that
       // were originally changed
@@ -404,11 +410,6 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
         query: $populate ? { ...updatedQuery, $populate } : updatedQuery,
       };
 
-      // If params.query.$populate was provided, remove it
-      // from the query sent to mongoose.
-      const discriminator: string = query[this.discriminatorKey] || this.discriminatorKey;
-      const model: mongoose.Model<DT> = this.discriminators[discriminator] || this.Model;
-
       const writeResult = await model.updateMany(query, data, options)
         .lean(this.lean)
         .exec();
@@ -417,7 +418,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
         return select(params, this.id)(writeResult);
       }
 
-      return this._getOrFind(id, findParams);
+      return this._getOrFind(null, findParams);
     } catch (e) {
       throw errorHandler(e);
     }

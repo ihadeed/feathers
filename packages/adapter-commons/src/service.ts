@@ -1,18 +1,8 @@
 import { BadRequest, MethodNotAllowed, NotImplemented } from '@ihadeed/errors';
-import {
-  FindOneParams,
-  Id,
-  NullableId,
-  Paginated,
-  PaginationParams,
-  Params,
-  Query,
-  ServiceMethods,
-} from '@ihadeed/feathers';
+import { FindOneParams, Id, NullableId, Paginated, PaginationParams, Params, ServiceMethods } from '@ihadeed/feathers';
 import filterQuery from './filter-query';
 
 const callMethod = (self: any, name: any, ...args: any[]) => {
-  console.log('Call method got called');
   if (typeof self[name] !== 'function') {
     return Promise.reject(new NotImplemented(`Method ${name} not available`));
   }
@@ -132,7 +122,6 @@ export class AdapterService<T = any> implements ServiceMethods<T> {
   async create(data: Partial<T>, params?: Params<T>): Promise<T>;
   async create(data: Partial<T>[], params?: Params<T>): Promise<T[]>;
   async create(data: Partial<T> | Array<Partial<T>>, params?: Params<T>) {
-    console.log('This create got called');
     if (Array.isArray(data) && !this.allowsMulti('create')) {
       throw new MethodNotAllowed(`Can not create multiple entries`);
     }

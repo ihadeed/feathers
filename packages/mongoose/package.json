@@ -49,13 +49,18 @@
     "@ihadeed/express": "^5.7.0",
     "@ihadeed/feathers": "^5.7.0",
     "@ihadeed/socketio": "^5.7.0",
+    "@types/jest": "^24.0.15",
     "@types/mongoose": "^5.5.8",
+    "jest": "^24.8.0",
     "lodash": "^4.17.14",
+    "mongodb-memory-server": "^5.1.5",
     "mongoose": "latest",
     "run-rs": "^0.5.2",
     "semistandard": "^13.0.1",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   }
 }
