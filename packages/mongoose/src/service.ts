@@ -9,7 +9,7 @@ import { ERROR, errorHandler } from './error-handler';
 
 export { ERROR } from './error-handler';
 
-export interface MongooseServiceOptions<T extends mongoose.Document = any> extends Partial<ServiceOptions> {
+export interface MongooseServiceOptions<T extends mongoose.Document = any> extends ServiceOptions {
   Model: mongoose.Model<T>;
   lean?: boolean;
   overwrite?: boolean;

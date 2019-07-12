@@ -26,12 +26,12 @@ const alwaysMulti: { [key: string]: boolean } = {
 };
 
 export interface ServiceOptions {
-  events: string[];
-  multi: boolean | string[];
-  id: string;
-  paginate: any;
-  whitelist: string[];
-  filters: string[];
+  events?: string[];
+  multi?: boolean | string[];
+  id?: string;
+  paginate?: any;
+  whitelist?: string[];
+  filters?: string[];
 }
 
 export interface InternalServiceMethods<T = any> {
