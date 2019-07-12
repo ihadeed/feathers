@@ -1,6 +1,6 @@
 {
   "name": "@ihadeed/hooks-common",
-  "version": "5.6.0",
+  "version": "5.7.0",
   "description": "Useful hooks for use with Feathersjs services.",
   "main": "lib/",
   "types": "types/",
@@ -37,9 +37,9 @@
   "homepage": "https://github.com/feathersjs/feathers-hooks-common#readme",
   "dependencies": {
     "@feathers-plus/batch-loader": "^0.3.0",
-    "@ihadeed/commons": "^5.6.0",
-    "@ihadeed/errors": "^5.6.0",
-    "@ihadeed/feathers": "^5.6.0",
+    "@ihadeed/commons": "^5.7.0",
+    "@ihadeed/errors": "^5.7.0",
+    "@ihadeed/feathers": "^5.7.0",
     "@types/graphql": "^14.0.4",
     "ajv": "^5.5.2",
     "debug": "^3.1.0",
