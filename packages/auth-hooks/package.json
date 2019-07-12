@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/auth-hooks",
   "description": "Feathers authentication hooks",
-  "version": "5.7.0",
+  "version": "6.0.0",
   "homepage": "https://github.com/feathersjs-ecosystem/feathers-authentication-hooks",
   "main": "lib/",
   "keywords": [
@@ -32,7 +32,7 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@ihadeed/errors": "^5.7.0",
+    "@ihadeed/errors": "^6.0.0",
     "debug": "^4.0.0",
     "lodash": "^4.17.5"
   },
