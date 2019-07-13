@@ -16,10 +16,6 @@ function feathersExpress (feathersApp, expressApp = express()) {
     throw new Error('@ihadeed/express requires a valid Feathers application instance');
   }
 
-  if (!feathersApp.version || feathersApp.version < '3.0.0') {
-    throw new Error(`@ihadeed/express requires an instance of a Feathers application version 3.x or later (got ${feathersApp.version || 'unknown'})`);
-  }
-
   // An Uberproto mixin that provides the extended functionality
   const mixin = {
     use (location) {

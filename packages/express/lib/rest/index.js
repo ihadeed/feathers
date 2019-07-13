@@ -94,10 +94,6 @@ function rest (handler = formatter) {
       throw new Error('@ihadeed/express/rest needs an Express compatible app. Feathers apps have to wrapped with feathers-express first.');
     }
 
-    if (!app.version || app.version < '3.0.0') {
-      throw new Error(`@ihadeed/express/rest requires an instance of a Feathers application version 3.x or later (got ${app.version})`);
-    }
-
     app.rest = {
       find: getHandler('find'),
       get: getHandler('get'),
