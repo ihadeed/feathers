@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/authentication-local",
   "description": "Local authentication strategy for @feathers/authentication",
-  "version": "100.3.0",
+  "version": "100.4.0",
   "homepage": "https://feathersjs.com",
   "main": "lib/",
   "types": "lib/index.d.ts",
@@ -39,14 +39,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/errors": "^100.3.0",
+    "@ihadeed/errors": "^100.4.0",
     "bcryptjs": "^2.4.3",
     "debug": "^4.1.1",
     "lodash": "^4.17.13"
   },
   "devDependencies": {
-    "@ihadeed/authentication": "^100.3.0",
-    "@ihadeed/feathers": "^100.3.0",
+    "@ihadeed/authentication": "^100.4.0",
+    "@ihadeed/feathers": "^100.4.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/debug": "^4.1.4",
     "@types/lodash": "^4.14.136",
