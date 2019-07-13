@@ -57,8 +57,6 @@ describe('@ihadeed/express', () => {
 
     try {
       const app = feathers();
-      app.version = '2.9.9';
-
       expressify(app);
     } catch (e) {
       assert.strictEqual(e.message, '@ihadeed/express requires an instance of a Feathers application version 3.x or later (got 2.9.9)');
