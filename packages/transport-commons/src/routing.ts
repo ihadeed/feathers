@@ -1,12 +1,13 @@
 // @ts-ignore
+import { EventEmitter } from "events";
 import Router from 'radix-router';
 import { stripSlashes } from '@ihadeed/commons';
-import { Application } from '@ihadeed/feathers';
+import { Application, KeyValue } from '@ihadeed/feathers';
 
 export const ROUTER = Symbol('@ihadeed/transport-commons/router');
 
 declare module '@ihadeed/feathers' {
-  interface Application<ServiceTypes> {
+  interface Application<ServiceTypes extends KeyValue = any> extends EventEmitter {
     lookup (path: string): { [key: string]: string };
   }
 }

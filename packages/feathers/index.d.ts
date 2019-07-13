@@ -243,7 +243,6 @@ declare namespace createApplication {
 
   type ServiceMixin = (service: Service<any>, path: string) => void;
 
-  // @ts-ignore
   interface Application<ServiceTypes extends KeyValue = any> extends EventEmitter {
     version: string;
 

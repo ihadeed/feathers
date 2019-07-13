@@ -1,9 +1,10 @@
 import Debug from 'debug';
+import { EventEmitter } from "events";
 import { compact, flattenDeep, noop } from 'lodash';
 import { Channel } from './channel/base';
 import { CombinedChannel } from './channel/combined';
 import { channelMixin, publishMixin, keys, PublishMixin, Event, Publisher } from './mixins';
-import { Application, Service } from '@ihadeed/feathers';
+import { Application, KeyValue, Service } from '@ihadeed/feathers';
 
 const debug = Debug('@ihadeed/transport-commons/channels');
 const { CHANNELS } = keys;
@@ -17,7 +18,7 @@ declare module '@ihadeed/feathers' {
     registerPublisher (event: Event, publisher: Publisher<T>): this;
   }
 
-  interface Application<ServiceTypes> {
+  interface Application<ServiceTypes extends KeyValue = any> extends EventEmitter {
     channels: string[];
 
     channel (name: string[]): Channel;

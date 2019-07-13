@@ -1,11 +1,12 @@
+import { EventEmitter } from "events";
 import { AuthenticationClient, AuthenticationClientOptions } from './core';
 import * as hooks from './hooks';
-import { Application } from '@ihadeed/feathers';
+import { Application, KeyValue } from '@ihadeed/feathers';
 import { AuthenticationResult, AuthenticationRequest } from '@ihadeed/authentication';
 import { Storage, MemoryStorage, StorageWrapper } from './storage';
 
 declare module '@ihadeed/feathers' {
-  interface Application<ServiceTypes = {}> {
+  interface Application<ServiceTypes extends KeyValue = any> extends EventEmitter {
     io?: any;
     rest?: any;
     authentication: AuthenticationClient;
@@ -19,7 +20,9 @@ export { AuthenticationClient, AuthenticationClientOptions, Storage, MemoryStora
 
 export type ClientConstructor = new (app: Application, options: AuthenticationClientOptions) => AuthenticationClient;
 
+// @ts-ignore
 export const defaultStorage: Storage = typeof window !== 'undefined' ?
+// @ts-ignore
   new StorageWrapper(window.localStorage) : new MemoryStorage();
 
 export const defaults: AuthenticationClientOptions = {
