@@ -8,7 +8,7 @@
     "lib": [
       "es2018"
     ],
-    "declaration": false,
+    "declaration": true,
     "allowUnreachableCode": false,
     "typeRoots": [
       "node_modules/@types"

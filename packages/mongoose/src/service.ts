@@ -475,5 +475,4 @@ export function init<T, DT extends mongoose.Document & T = mongoose.Document & T
 }
 
 init.Service = Service;
-init.default = init;
 init.ERROR = ERROR;
