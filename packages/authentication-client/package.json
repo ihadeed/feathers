@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/authentication-client",
   "description": "The authentication plugin for feathers-client",
-  "version": "6.0.0",
+  "version": "100.0.0",
   "homepage": "https://feathersjs.com",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -39,18 +39,18 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/commons": "^6.0.0",
-    "@ihadeed/errors": "^6.0.0",
+    "@ihadeed/commons": "^100.0.0",
+    "@ihadeed/errors": "^100.0.0",
     "debug": "^4.1.1"
   },
   "devDependencies": {
-    "@ihadeed/authentication": "^6.0.0",
-    "@ihadeed/authentication-local": "^6.0.0",
-    "@ihadeed/express": "^6.0.0",
-    "@ihadeed/feathers": "^6.0.0",
-    "@ihadeed/rest-client": "^6.0.0",
-    "@ihadeed/socketio": "^6.0.0",
-    "@ihadeed/socketio-client": "^6.0.0",
+    "@ihadeed/authentication": "^100.0.0",
+    "@ihadeed/authentication-local": "^100.0.0",
+    "@ihadeed/express": "^100.0.0",
+    "@ihadeed/feathers": "^100.0.0",
+    "@ihadeed/rest-client": "^100.0.0",
+    "@ihadeed/socketio": "^100.0.0",
+    "@ihadeed/socketio-client": "^100.0.0",
     "@types/debug": "^4.1.4",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.6.2",
