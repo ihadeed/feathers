@@ -19,6 +19,24 @@ interface Feathers {
 
 declare namespace createApplication {
 
+  type ApplicationConfigureFunction<T> = (app: Application<T>) => any;
+
+  type KeyValue<T = any> = {
+    [key: string]: T;
+  };
+
+  type AppModelTypes<AppModels> = {
+    [K in KeyOf<AppModels>]: AppModels[K];
+  }[KeyOf<AppModels>];
+
+  type ModelsToServices<T> = {
+    [K in KeyOf<T>]: Service<T[K]>;
+  }
+
+  type ServiceIndex<T, MTS extends AppModelTypes<T> = AppModelTypes<T>> = {
+    [K in keyof MTS]?: Service<MTS[K]>;
+  };
+
   type Id = number | string;
   type NullableId = Id | null;
 
@@ -58,7 +76,7 @@ declare namespace createApplication {
     $populate?: MongoosePopulateParams;
   }
 
-  type Query<T> = BaseQuery<T> & QueryOrBlock<T>;
+  type Query<T = any> = BaseQuery<T> & QueryOrBlock<T>;
 
   interface Params<T = any> {
     query?: Query<T>;
@@ -84,15 +102,14 @@ declare namespace createApplication {
     paginate: true;
   }
 
-  // tslint:disable-next-line void-return
-  type Hook = (hook: HookContext) => (Promise<HookContext | void> | HookContext | void);
+  type Hook<T = any, AT = any> = (hook: HookContext<T, AT>) => (Promise<HookContext<T, AT> | void> | HookContext<T, AT> | void);
 
-  interface HookContext<T = any> {
+  interface HookContext<T = any, AT = any> {
     /**
      * A read only property that contains the Feathers application object. This can be used to
      * retrieve other services (via context.app.service('name')) or configuration values.
      */
-    readonly app: Application;
+    readonly app: Application<AT>;
     /**
      * A writeable property containing the data of a create, update and patch service
      * method call.
@@ -160,21 +177,21 @@ declare namespace createApplication {
     enableTransaction?: boolean;
   }
 
-  interface HookMap {
-    all: Hook | Hook[];
-    find: Hook | Hook[];
-    get: Hook | Hook[];
-    create: Hook | Hook[];
-    update: Hook | Hook[];
-    patch: Hook | Hook[];
-    remove: Hook | Hook[];
+  interface HookMap<T = any, AT = any> {
+    all: Hook<T, AT> | Hook<T, AT>[];
+    find: Hook<T, AT> | Hook<T, AT>[];
+    get: Hook<T, AT> | Hook<T, AT>[];
+    create: Hook<T, AT> | Hook<T, AT>[];
+    update: Hook<T, AT> | Hook<T, AT>[];
+    patch: Hook<T, AT> | Hook<T, AT>[];
+    remove: Hook<T, AT> | Hook<T, AT>[];
   }
 
-  interface HooksObject {
-    before: Partial<HookMap> | Hook | Hook[];
-    after: Partial<HookMap> | Hook | Hook[];
-    error: Partial<HookMap> | Hook | Hook[];
-    finally?: Partial<HookMap> | Hook | Hook[];
+  interface HooksObject<T = any, AT = any> {
+    before: Partial<HookMap<T, AT>> | Hook<T, AT> | Hook<T, AT>[];
+    after: Partial<HookMap<T, AT>> | Hook<T, AT> | Hook<T, AT>[];
+    error: Partial<HookMap<T, AT>> | Hook<T, AT> | Hook<T, AT>[];
+    finally?: Partial<HookMap<T, AT>> | Hook<T, AT> | Hook<T, AT>[];
   }
 
   interface ServiceMethods<T> {
@@ -226,7 +243,8 @@ declare namespace createApplication {
 
   type ServiceMixin = (service: Service<any>, path: string) => void;
 
-  interface Application<ServiceTypes = {}> extends EventEmitter {
+  // @ts-ignore
+  interface Application<ServiceTypes extends KeyValue = any> extends EventEmitter {
     version: string;
 
     services: Extract<keyof ServiceTypes, string> extends never ? any : ServiceTypes;
@@ -257,7 +275,7 @@ declare namespace createApplication {
 
     service(location: string): Extract<keyof ServiceTypes, string> extends never ? any : never;
 
-    use(path: string, service: Partial<ServiceMethods<any> & SetupMethod> | Application, options?: any): this;
+    use(path: string, service: Partial<ServiceMethods<any> & SetupMethod> | Application<ServiceTypes>, options?: any): this;
 
     listen(port: number): http.Server;
   }

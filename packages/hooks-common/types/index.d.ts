@@ -210,7 +210,7 @@ export interface ResolverMap<T> {
  * fastJoin(postResolvers, context => query) // supports queries from client
  * {@link https://feathers-plus.github.io/v1/@ihadeed/hooks-common/index.html#FastJoin}
  */
-export function fastJoin(resolvers: ResolverMap<any> | SyncContextFunction<ResolverMap<any>>, query?: Query | SyncContextFunction<Query>): Hook;
+export function fastJoin(resolvers: ResolverMap<any> | SyncContextFunction<ResolverMap<any>>, query?: Query<any> | SyncContextFunction<Query>): Hook;
 
 export type FGraphQLResolverMapFactory = (app: Application, runtime: any) => FGraphQLResolverMap;
 
@@ -236,7 +236,7 @@ export interface FGraphQLHookOptions {
     recordType: string;
     schema: string;
     resolvers: FGraphQLResolverMap | FGraphQLResolverMapFactory;
-    query: Query | SyncContextFunction<Query>;
+    query: Query<any> | SyncContextFunction<Query<any>>;
     options?: FGraphQLOptions;
     runTime: any;
     parse: typeof parse;
