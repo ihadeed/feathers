@@ -1,4 +1,4 @@
-import { AdapterService, InternalServiceMethods, select, ServiceOptions } from '@ihadeed/adapter-commons';
+import { AdapterService, InternalServiceMethods, ServiceOptions } from '@ihadeed/adapter-commons';
 import errors from '@ihadeed/errors';
 import {
   FindOneParams,
@@ -116,12 +116,13 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
   async _find(params?: PaginationParams<T>): Promise<Paginated<T>>;
   async _find(params?: Params<T> | PaginationParams<T>): Promise<T | T[] | Paginated<T>> {
     params = params || {};
+    params.mongoose = params.mongoose || {};
     params.query = params.query || {};
 
     const { filters, query, paginate } = this.filterQuery(params);
     const discriminator = params.query[this.discriminatorKey] || this.discriminatorKey;
     const model: mongoose.Model<DT> = this.discriminators[discriminator] || this.Model;
-    const q: MQuery<DT> = model.find(query).lean(this.lean);
+    const q: MQuery<DT> = model.find(query, {}, params.mongoose).lean(this.lean);
 
     // $select uses a specific find syntax, so it has to come first.
     if (Array.isArray(filters.$select)) {
@@ -167,7 +168,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
         };
       }
 
-      const data = await q.session(params.mongoose && params.mongoose.session).exec();
+      const data = await q.setOptions(params.mongoose).exec();
 
       return {
         total,
@@ -197,6 +198,8 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
   }
 
   async _get(id: Id, params: Params<T> = {}): Promise<T> {
+    params = params || {};
+    params.mongoose = params.mongoose || {};
     const { query, filters } = this.filterQuery(params);
     query.$and = [
       ...query.$and || [],
@@ -207,7 +210,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
 
     const discriminator: string = query[this.discriminatorKey] || this.discriminatorKey;
     const model: mongoose.Model<DT> = this.discriminators[discriminator] || this.Model;
-    let modelQuery: MQuery<DT> = model.findOne(query);
+    let modelQuery: MQuery<DT> = model.findOne(query, {}, params.mongoose);
 
     // Handle $populate
     if (filters.$populate) {
@@ -230,7 +233,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
     let data;
 
     try {
-      data = await modelQuery.session(params.mongoose && params.mongoose.session).lean(this.lean).exec();
+      data = await modelQuery.lean(this.lean).exec();
     } catch (e) {
       throw errorHandler(e);
     }
@@ -246,6 +249,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
   async _create(_data: T[], params?: Params<T>): Promise<T[]>
   async _create(_data: T | T[], params: Params<T> = {}): Promise<T | T[]> {
     params = params || {};
+    params.mongoose = params.mongoose || {};
     params.query = params.query || {};
 
     const discriminatorKey: string = params.query[this.discriminatorKey] || this.discriminatorKey;
@@ -271,8 +275,6 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
         results = results.map(r => r.toObject());
       }
 
-      results = select(params, this.id)(results);
-
       if (Array.isArray(_data)) {
         return results;
       }
@@ -284,6 +286,8 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
   }
 
   async _update(id: string, data: T | mongoose.Document, params: Params<T> = {}) {
+    params = params || {};
+    params.mongoose = params.mongoose || {};
     if (id === null) {
       throw new errors.BadRequest('Not replacing multiple records. Did you mean `patch`?');
     }
@@ -335,12 +339,14 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
       throw new errors.NotFound(`No record found for id '${id}'`);
     }
 
-    return select(params, this.id)(result);
+    return result;
   }
 
   async _patch(id: Id, data: Partial<T | mongoose.Document>, params?: Params<T>): Promise<T>;
   async _patch(id: null, data: Partial<T | mongoose.Document>, params?: Params<T>): Promise<T[]>;
   async _patch(id: NullableId, data: Partial<T | mongoose.Document>, params: Params<T> = {}): Promise<T | T[]> {
+    params = params || {};
+    params.mongoose = params.mongoose || {};
     const { query } = this.filterQuery(params);
 
     // Handle case where data might be a mongoose model
@@ -352,10 +358,11 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
     data = _.cloneDeep(data);
 
     // If we are updating multiple records
-    const options: UpdateManyOptions & { writeResult: boolean; } = {
+    const options: UpdateManyOptions = {
       multi: id === null,
       runValidators: true,
       context: 'query',
+      new: true,
       ...params.mongoose,
     };
 
@@ -373,12 +380,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
 
     if (id !== null) {
       try {
-        const res = await model.findByIdAndUpdate(id, data, {
-          ...options,
-          new: !options.writeResult,
-        }).lean(this.lean).exec();
-
-        return select(params, this.id)(res);
+        return await model.findByIdAndUpdate(id, data, options).lean(this.lean).exec();
       } catch (err) {
         throw errorHandler(err);
       }
@@ -410,13 +412,9 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
         query: $populate ? { ...updatedQuery, $populate } : updatedQuery,
       };
 
-      const writeResult = await model.updateMany(query, data, options)
+      await model.updateMany(query, data, options)
         .lean(this.lean)
         .exec();
-
-      if (options.writeResult) {
-        return select(params, this.id)(writeResult);
-      }
 
       return this._getOrFind(null, findParams);
     } catch (e) {
@@ -425,6 +423,8 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
   }
 
   async _remove(id: string, params: Params<T> = {}) {
+    params = params || {};
+    params.mongoose = params.mongoose || {};
     const { query } = this.filterQuery(params);
 
     if (params.collation) {
@@ -463,7 +463,7 @@ export class Service<T, DT extends mongoose.Document & T = T & mongoose.Document
     try {
       const data = await this._getOrFind(id, findParams);
       await this.Model.deleteMany(query, params.mongoose).lean(this.lean).exec();
-      return select(params, this.id)(data);
+      return data;
     } catch (err) {
       throw errorHandler(err);
     }
