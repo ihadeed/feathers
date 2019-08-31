@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/socketio",
   "description": "The Feathers Socket.io real-time API provider",
-  "version": "100.5.0",
+  "version": "500.0.0",
   "homepage": "https://feathersjs.com",
   "main": "lib/",
   "types": "index.d.ts",
@@ -36,16 +36,16 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/transport-commons": "^100.5.0",
+    "@ihadeed/transport-commons": "^500.0.0",
     "@types/socket.io": "^2.1.2",
     "debug": "^4.1.1",
     "socket.io": "^2.2.0",
     "uberproto": "^2.0.4"
   },
   "devDependencies": {
-    "@ihadeed/commons": "^100.5.0",
-    "@ihadeed/express": "^100.5.0",
-    "@ihadeed/feathers": "^100.5.0",
+    "@ihadeed/commons": "^500.0.0",
+    "@ihadeed/express": "^500.0.0",
+    "@ihadeed/feathers": "^500.0.0",
     "feathers-memory": "^4.0.0",
     "lodash": "^4.17.13",
     "mocha": "^6.1.4",
