@@ -1,1 +1,1 @@
-module.exports = '500.0.0';
+module.exports = '600.0.0';
