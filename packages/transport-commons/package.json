@@ -1,7 +1,7 @@
 {
   "name": "@ihadeed/transport-commons",
   "description": "Shared functionality for websocket providers",
-  "version": "500.0.0",
+  "version": "600.0.0",
   "homepage": "https://feathersjs.com",
   "main": "lib/",
   "types": "lib/",
@@ -39,14 +39,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@ihadeed/commons": "^500.0.0",
-    "@ihadeed/errors": "^500.0.0",
+    "@ihadeed/commons": "^600.0.0",
+    "@ihadeed/errors": "^600.0.0",
     "debug": "^4.1.1",
     "lodash": "^4.17.13",
     "radix-router": "^3.0.1"
   },
   "devDependencies": {
-    "@ihadeed/feathers": "^500.0.0",
+    "@ihadeed/feathers": "^600.0.0",
     "@types/debug": "^4.1.4",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.6.2",
