@@ -70,12 +70,12 @@ export class AuthenticationService<Entity extends string = never, EntityType = a
     ]);
 
     if (authResult.accessToken) {
-      return authResult;
+      delete authResult.accessToken;
     }
 
     debug('Creating JWT with', payload, jwtOptions);
 
-    const accessToken = await this.createAccessToken(payload, jwtOptions, params.secret);
+    const accessToken = await this.createAccessToken(payload, jwtOptions, params.secret || this.configuration.secret);
 
     return Object.assign({}, { accessToken }, authResult);
   }
